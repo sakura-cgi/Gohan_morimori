@@ -2813,13 +2813,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
   temp: 100
   temp_object: {fileID: 0}
   temp_slider: {fileID: 0}
 =======
-=======
->>>>>>> Stashed changes
   temp: 26
   temp_object: {fileID: 1789183468}
   temp_slider: {fileID: 166724854}

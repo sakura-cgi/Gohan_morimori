@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class TempManager : MonoBehaviour
 {
-    public int temp = 100; // 現在の体温
+    public int temp;
     public GameObject temp_object = null; // Textオブジェクト
     public Slider temp_slider = null; // Sliderオブジェクト
 
@@ -28,7 +28,5 @@ public class TempManager : MonoBehaviour
         {
             temp_slider.value = temp;
         }
-
-        temp += 1;
     }
 }

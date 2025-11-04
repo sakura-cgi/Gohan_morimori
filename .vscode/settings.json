@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Gohan_Morimori.sln"
+    "dotnet.defaultSolution": "Gohan_morimori.sln"
 }

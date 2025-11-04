@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: idle
+  m_Name: dash
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,7 +21,11 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 21300000, guid: dab15bc54475684419f3c30b5be44fde, type: 3}
+      value: {fileID: 21300000, guid: 46298d98545e20b4db45fbec8a773e17, type: 3}
+    - time: 0.016666668
+      value: {fileID: 21300000, guid: 4f7e20eb1d39eb84aa1c3b61e6199faa, type: 3}
+    - time: 0.033333335
+      value: {fileID: 21300000, guid: 5979761c01b7cb84d8aab9bb66331348, type: 3}
     attribute: m_Sprite
     path: Square
     classID: 212
@@ -44,13 +48,15 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: dab15bc54475684419f3c30b5be44fde, type: 3}
+    - {fileID: 21300000, guid: 46298d98545e20b4db45fbec8a773e17, type: 3}
+    - {fileID: 21300000, guid: 4f7e20eb1d39eb84aa1c3b61e6199faa, type: 3}
+    - {fileID: 21300000, guid: 5979761c01b7cb84d8aab9bb66331348, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.016666668
+    m_StopTime: 0.050000004
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

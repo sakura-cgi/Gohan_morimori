@@ -1,9 +1,9 @@
-using UnityEngine;
+//using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+//[RequireComponent(typeof(Rigidbody2D))]
 
-public class PlayerCtrl : MonoBehaviour
-{
+//public class PlayerCtrl : MonoBehaviour
+//{
     
 
 

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class TempShow : MonoBehaviour
 {
@@ -17,5 +18,12 @@ public class TempShow : MonoBehaviour
        Text temp_text = temp_object.GetComponent<Text>();
        TempManager temp_manager = GetComponent<TempManager>();
         temp_text.text = temp_manager.temp.ToString();
+        if(Input.GetKey(KeyCode.Space)){
+            temp_manager.temp = 27;
+        }
+        else
+        {
+            temp_manager.temp = 26;
+        }
     }
 }

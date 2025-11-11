@@ -18,12 +18,12 @@ public class TempShow : MonoBehaviour
        Text temp_text = temp_object.GetComponent<Text>();
        TempManager temp_manager = GetComponent<TempManager>();
         temp_text.text = temp_manager.temp.ToString();
-        if(Input.GetKey(KeyCode.Space)){
-            temp_manager.temp = 27;
+        if(Input.GetKeyDown(KeyCode.Q) && temp_manager.temp < 50){
+            temp_manager.temp ++;
         }
-        else
+        else if(Input.GetKeyDown(KeyCode.Z) && temp_manager.temp > 20)
         {
-            temp_manager.temp = 26;
+            temp_manager.temp --;
         }
     }
 }

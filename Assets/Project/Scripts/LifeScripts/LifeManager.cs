@@ -10,7 +10,10 @@ public class LifeManager : MonoBehaviour
     private int currentlife;
     public int displayLife;
     public int qurterlife;
-    
+
+    private float damageTimer = 0f; // ダメージを与えるためのタイマー
+    private float damageInterval = 3f; // ダメージを与える間隔
+
     void Start()
     {
         currentlife = life;
@@ -29,12 +32,29 @@ public class LifeManager : MonoBehaviour
             life--;
         }
 
+        if (GetComponent<TempManager>().temp > 40)
+        {
+            damageTimer += Time.deltaTime; // タイマーを進める
+            if (damageTimer >= damageInterval)
+            {
+                life--; // ライフを1減らす
+                damageTimer = 0f; // タイマーをリセット
+            }
+        }
+        else
+        {
+            damageTimer = 0f; // 温度が41度以下の場合、タイマーをリセット
+        }
+
         if (currentlife != life)
         {
             Updatelife();
         }
 
+   
     }
+
+    
     private void Updatelife()
     {
         currentlife = life;

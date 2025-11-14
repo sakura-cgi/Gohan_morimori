@@ -4,9 +4,12 @@ using UnityEngine.UI;
 
 public class LifeManager : MonoBehaviour
 {
-    public int life = 5;
+    public int life = 20;
     public GameObject[] LifeDisplay = new GameObject[5];
+    public Sprite[] lifequrter = new Sprite[4];
     private int currentlife;
+    public int displayLife;
+    public int qurterlife;
     
     void Start()
     {
@@ -35,9 +38,12 @@ public class LifeManager : MonoBehaviour
     private void Updatelife()
     {
         currentlife = life;
+        displayLife = (life + 3) / 4; ///ライフを4/1ずつ分割するための処理
+        qurterlife = life % 4;
         for (int i = 0; i < LifeDisplay.Length; i++)
         {
-            if (i < life)
+
+            if (i < displayLife)
             {
                 LifeDisplay[i].SetActive(true);
             }
@@ -45,7 +51,27 @@ public class LifeManager : MonoBehaviour
             {
                 LifeDisplay[i].SetActive(false);
             }
+
+            if (i == displayLife - 1)
+            {
+                switch (qurterlife)
+                {
+                    case 0:
+                        LifeDisplay[i].GetComponent<Image>().sprite = lifequrter[0];
+                        break;
+                    case 1:
+                        LifeDisplay[i].GetComponent<Image>().sprite = lifequrter[1];
+                        break;
+                    case 2:
+                        LifeDisplay[i].GetComponent<Image>().sprite = lifequrter[2];
+                        break;
+                    case 3:
+                        LifeDisplay[i].GetComponent<Image>().sprite = lifequrter[3];
+                        break;
+                }
+            }
         }
+
      
     }
 }

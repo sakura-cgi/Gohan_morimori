@@ -45,6 +45,14 @@ public class LifeManager : MonoBehaviour
         {
             damageTimer = 0f; // 温度が41度以下の場合、タイマーをリセット
         }
+        
+        if(life < 0)
+        {
+            life = 0;
+        }else if(life > 20)
+        {
+            life = 20;
+        }
 
         if (currentlife != life)
         {

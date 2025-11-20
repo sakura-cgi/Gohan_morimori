@@ -405,6 +405,7 @@ MonoBehaviour:
   pauseMenuUI: {fileID: 1151785936}
   resumeButton: {fileID: 58721895}
   quitButton: {fileID: 451912168}
+  MainMenu: MainMenu
 --- !u!4 &137476960
 Transform:
   m_ObjectHideFlags: 0

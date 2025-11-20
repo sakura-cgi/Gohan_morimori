@@ -8,12 +8,13 @@ public class PauseScript : MonoBehaviour
     [SerializeField] private GameObject pauseMenuUI; 
     [SerializeField] private Button resumeButton;     
     [SerializeField] private Button quitButton;
+    [SerializeField] string MainMenu;  
      private bool isPaused = false;
     void Start()
     {
         pauseMenuUI.SetActive(false);
         resumeButton.onClick.AddListener(ResumeGame);
-        ///quitButton.onClick.AddListener(QuitGame);
+        quitButton.onClick.AddListener(QuitGame);
     }
 
     // Update is called once per frame
@@ -59,5 +60,11 @@ public class PauseScript : MonoBehaviour
 
         // ポーズ状態を更新
         isPaused = false;
+    }
+    private void QuitGame()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(MainMenu);
+        Debug.Log("Game Quit");
     }
 }

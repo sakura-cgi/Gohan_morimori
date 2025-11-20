@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using NUnit.Framework;
@@ -9,6 +10,6 @@ public class SceneChange : MonoBehaviour,ActionBase
     public void Action()
     {
         Debug.Log("SceneChange");
-        ///SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(sceneName);
     }
 }

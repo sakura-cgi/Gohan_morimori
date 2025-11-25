@@ -8,7 +8,7 @@ public class TempEfect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GetComponent<TempManager>().temp <= 45)
+        if(GetComponent<TempManager>().temp >= 41)
         {
             
         }

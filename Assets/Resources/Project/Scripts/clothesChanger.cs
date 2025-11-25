@@ -17,8 +17,8 @@ public int currentClothes = 0;
 void Start()
 {
     animator = GetComponentInChildren<Animator>();
-
-    int clothesCount = 3;
+    
+    int clothesCount = 5;
     int motionCount = motions.Length;
 
     clothSprites = new Sprite[motionCount][][];

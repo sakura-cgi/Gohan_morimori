@@ -13,6 +13,11 @@ public class PlayerMovement : MonoBehaviour
     private bool isDashing = false;
     private float moveInput;
 
+    [SerializeField] float maxJumpHeight = 3f; // 最大ジャンプ高度
+    private float jumpStartY;                  // ジャンプ開始時のY座標
+    private bool isJumping = false;            // ジャンプ中かどうか
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -24,10 +29,27 @@ public class PlayerMovement : MonoBehaviour
         // --- 入力処理 ---
         moveInput = Input.GetAxisRaw("Horizontal");
 
-        // --- ジャンプ ---
+        // --- ジャンプ開始 ---
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            isJumping = true;
+            jumpStartY = transform.position.y;
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        }
+
+        // --- ジャンプ中の処理 ---
+        if (isJumping)
+        {
+            // Spaceを押している間 & 上限高度未満なら上昇
+            if (Input.GetKey(KeyCode.Space) && (transform.position.y - jumpStartY) < maxJumpHeight)
+            {
+                rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Force);
+                // Debug.Log("ジャンプ中: " + (transform.position.y - jumpStartY));
+            }
+            else
+            {
+                isJumping = false;
+            }
         }
 
         // --- ダッシュ入力 ---
@@ -53,25 +75,28 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool("isDashing", isDashing);
 
         // --- Animatorへの値反映 ---
-anim.SetBool("isWalking", isWalking);
-anim.SetBool("isDashing", isDashing);
+        anim.SetBool("isWalking", isWalking);
+        anim.SetBool("isDashing", isDashing);
 
-// ★ Motionをここで反映させる
-if (isDashing)
-    anim.SetInteger("Motion", 2);
-else if (isWalking)
-    anim.SetInteger("Motion", 1);
-else
-    anim.SetInteger("Motion", 0);
+        // Motionの反映
+        if (isDashing)
+            anim.SetInteger("Motion", 2);
+        else if (isWalking)
+            anim.SetInteger("Motion", 1);
+        else
+            anim.SetInteger("Motion", 0);
 
     }
 
     void FixedUpdate()
     {
-        // --- 通常移動 or ダッシュ移動 ---
-        float currentSpeed = isDashing ? dashForce : moveSpeed;
-        rb.linearVelocity = new Vector2(moveInput * currentSpeed, rb.linearVelocity.y);
+        if (!isJumping)
+        {
+            float currentSpeed = isDashing ? dashForce : moveSpeed;
+            rb.linearVelocity = new Vector2(moveInput * currentSpeed, rb.linearVelocity.y);
+        }
     }
+
 
     void OnCollisionStay2D(Collision2D collision)
     {
@@ -85,57 +110,3 @@ else
             isGrounded = false;
     }
 }
-
-
-
-// using UnityEngine;
-
-// [RequireComponent(typeof(Rigidbody2D))]
-// public class PlayerMovement : MonoBehaviour
-// {
-//     public float moveSpeed = 5f;     // 左右移動速度
-//     public float jumpForce = 10f;    // ジャンプの強さ
-//     private Rigidbody2D rb;
-//     private bool isGrounded = false;
-//     private float moveInput;
-
-//     void Start()
-//     {
-//         rb = GetComponent<Rigidbody2D>();
-//     }
-
-//     void Update()
-//     {
-//         // 左右移動入力
-//         moveInput = Input.GetAxisRaw("Horizontal");
-
-//         // ジャンプ
-//         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-//         {
-//             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-//         }
-//     }
-
-//     void FixedUpdate()
-//     {
-//         // 移動反映
-//         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
-//     }
-
-//     // 地面接触判定
-//     void OnCollisionEnter2D(Collision2D collision)
-//     {
-//         if (collision.collider.CompareTag("Ground"))
-//         {
-//             isGrounded = true;
-//         }
-//     }
-
-//     void OnCollisionExit2D(Collision2D collision)
-//     {
-//         if (collision.collider.CompareTag("Ground"))
-//         {
-//             isGrounded = false;
-//         }
-//     }
-// }

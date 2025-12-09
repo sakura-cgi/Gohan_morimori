@@ -12,7 +12,6 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
     private bool isGrounded;
     private bool isDashing = false;
-
     private bool isAttacking = false;
     private float moveInput;
 
@@ -75,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftControl)&& !isAttacking)
         {
             isAttacking = true;
-            anim.SetTrigger("Attack");
+            anim.SetBool("isAttacking", true);
 
             heatReceiver.OnAttack();
         }
@@ -98,7 +97,9 @@ public class PlayerMovement : MonoBehaviour
 
 
         // Motionの反映
-        if (isDashing)
+        if (isAttacking)
+            anim.SetInteger("Motion", 3);
+        else if (isDashing)
             anim.SetInteger("Motion", 2);
         else if (isWalking)
             anim.SetInteger("Motion", 1);

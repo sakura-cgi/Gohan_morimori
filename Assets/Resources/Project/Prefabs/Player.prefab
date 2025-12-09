@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1977337093448022298}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.25, y: 1.16, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 15.36, y: 20.48}
+  m_Size: {x: 20.25, y: 27}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7edd472bb18f864b9b0cf659a567575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInitiallyHidden: 1
+  isInitiallyHidden: 0
 --- !u!114 &6265301736977809599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,9 +140,9 @@ Transform:
   m_GameObject: {fileID: 3310241482569053297}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 1.17, z: 0}
+  m_LocalScale: {x: 0.36, y: 0.36, z: 0.36}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5579864810689382300}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -190,15 +190,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 244d8b5d86b4df646982ec85397e47fb, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 15.36, y: 20.48}
+  m_Size: {x: 24.5, y: 27}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &8450028527183630850
@@ -215,6 +215,7 @@ GameObject:
   - component: {fileID: 4382624399872127059}
   - component: {fileID: 3316394737594040423}
   - component: {fileID: 8423656862575026748}
+  - component: {fileID: 4311104916136814161}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -233,7 +234,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -2.53, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2525682074821711068}
   - {fileID: 657440432010786747}
@@ -254,7 +255,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1.5
+  m_GravityScale: 1.8
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -300,17 +301,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.14, y: -0.18}
+  m_Offset: {x: 0.14, y: 0.78}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3, y: 4}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 4.715, y: 5.265}
+    newSize: {x: 9.43, y: 10.53}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.09, y: 2.6}
+  m_Size: {x: 1.85, y: 4.66}
   m_EdgeRadius: 0
 --- !u!114 &4382624399872127059
 MonoBehaviour:
@@ -327,6 +328,8 @@ MonoBehaviour:
   moveSpeed: 5
   dashForce: 7
   jumpForce: 7
+  maxJumpHeight: 8
+  heatReceiver: {fileID: 4311104916136814161}
 --- !u!95 &3316394737594040423
 Animator:
   serializedVersion: 7
@@ -363,3 +366,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clothesRenderer: {fileID: 7988080007684443225}
   currentClothes: 0
+--- !u!114 &4311104916136814161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8450028527183630850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99a3bc5c94f83a74197d17beaea9044f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heatManager: {fileID: 0}

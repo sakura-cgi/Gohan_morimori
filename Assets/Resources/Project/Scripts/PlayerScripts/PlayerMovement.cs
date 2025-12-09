@@ -3,6 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
+    
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float dashForce = 12.0f;
     [SerializeField] float jumpForce = 7f;
@@ -11,13 +12,16 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
     private bool isGrounded;
     private bool isDashing = false;
+
+    private bool isAttacking = false;
     private float moveInput;
 
     [SerializeField] float maxJumpHeight = 3f; // 最大ジャンプ高度
     private float jumpStartY;                  // ジャンプ開始時のY座標
     private bool isJumping = false;            // ジャンプ中かどうか
 
-
+    public HeatEventReceiver heatReceiver;
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -35,6 +39,8 @@ public class PlayerMovement : MonoBehaviour
             isJumping = true;
             jumpStartY = transform.position.y;
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+
+            heatReceiver.OnJump();
         }
 
         // --- ジャンプ中の処理 ---
@@ -57,10 +63,25 @@ public class PlayerMovement : MonoBehaviour
         {
             isDashing = true;
             anim.SetBool("isDashing", true);
+
+            heatReceiver.OnDash();
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             isDashing = false;
+        }
+
+        // --- 攻撃 ---
+        if (Input.GetKeyDown(KeyCode.LeftControl)&& !isAttacking)
+        {
+            isAttacking = true;
+            anim.SetTrigger("Attack");
+
+            heatReceiver.OnAttack();
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftControl))
+        {
+            isAttacking = false;
         }
 
         // --- 向き反転 ---
@@ -73,10 +94,8 @@ public class PlayerMovement : MonoBehaviour
         bool isWalking = Mathf.Abs(moveInput) > 0.1f && !isDashing;
         anim.SetBool("isWalking", isWalking);
         anim.SetBool("isDashing", isDashing);
+        anim.SetBool("isAttacking", isAttacking);
 
-        // --- Animatorへの値反映 ---
-        anim.SetBool("isWalking", isWalking);
-        anim.SetBool("isDashing", isDashing);
 
         // Motionの反映
         if (isDashing)
@@ -100,8 +119,10 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Ground"))
+        if (collision.collider.CompareTag("Ground")){
             isGrounded = true;
+        }
+            
     }
 
     void OnCollisionExit2D(Collision2D collision)

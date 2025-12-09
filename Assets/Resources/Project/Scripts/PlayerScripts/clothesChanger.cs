@@ -8,7 +8,7 @@ public SpriteRenderer clothesRenderer;
 public Sprite[][][] clothSprites;
 
 // AnimatorのMotion
-private string[] motions = { "idle", "walk", "dash" };
+private string[] motions = { "idle", "walk", "dash", "attack" };
 
 private Animator animator;
 

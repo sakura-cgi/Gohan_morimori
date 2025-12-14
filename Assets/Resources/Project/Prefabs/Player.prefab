@@ -215,7 +215,6 @@ GameObject:
   - component: {fileID: 4382624399872127059}
   - component: {fileID: 3316394737594040423}
   - component: {fileID: 8423656862575026748}
-  - component: {fileID: 4311104916136814161}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -329,7 +328,7 @@ MonoBehaviour:
   dashForce: 7
   jumpForce: 7
   maxJumpHeight: 8
-  heatReceiver: {fileID: 4311104916136814161}
+  heatReceiver: {fileID: 0}
 --- !u!95 &3316394737594040423
 Animator:
   serializedVersion: 7
@@ -366,16 +365,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clothesRenderer: {fileID: 7988080007684443225}
   currentClothes: 0
---- !u!114 &4311104916136814161
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8450028527183630850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99a3bc5c94f83a74197d17beaea9044f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  heatManager: {fileID: 0}

@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
     private bool isGrounded;
-    private bool isDashing = false;
+    public bool isDashing = false;
 
     private bool isAttacking = false;
     private float moveInput;
@@ -20,7 +20,9 @@ public class PlayerMovement : MonoBehaviour
     private float jumpStartY;                  // ジャンプ開始時のY座標
     private bool isJumping = false;            // ジャンプ中かどうか
 
-    public HeatEventReceiver heatReceiver;
+   [SerializeField] public JumpTempManager jumptempmanager;
+
+    [SerializeField]private AttackTempManager attacktempmanager;
     
     void Start()
     {
@@ -40,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
             jumpStartY = transform.position.y;
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 
-            heatReceiver.OnJump();
+           jumptempmanager.OnJump();
         }
 
         // --- ジャンプ中の処理 ---
@@ -64,7 +66,6 @@ public class PlayerMovement : MonoBehaviour
             isDashing = true;
             anim.SetBool("isDashing", true);
 
-            heatReceiver.OnDash();
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
@@ -77,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
             isAttacking = true;
             anim.SetTrigger("Attack");
 
-            heatReceiver.OnAttack();
+            attacktempmanager.OnAttack();
         }
         else if (Input.GetKeyUp(KeyCode.LeftControl))
         {

@@ -3,10 +3,11 @@ using UnityEngine;
 public class HeatEventReceiver : MonoBehaviour
 {
     public HeatManager heatManager;
+    [SerializeField]  private GameObject TempManager;
 
     public void OnJump()
     {
-        heatManager.RegisterAction();
+        TempManager.temp ++;
         Debug.Log("Jump action registered to HeatManager.");
 
     }

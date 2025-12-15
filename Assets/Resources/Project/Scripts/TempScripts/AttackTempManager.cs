@@ -1,4 +1,6 @@
 using UnityEngine;
+
+/// 体温の減少処理はDashTempManagerが担当する
 public class AttackTempManager : MonoBehaviour
 {
     private int AttackCount = 0;
@@ -6,7 +8,7 @@ public class AttackTempManager : MonoBehaviour
 
     private float firstActionTime;   // 1回目の入力時間
     private float lastInputTime;     // 最後に入力された時間
-    private bool isHeatMode = false;
+    public bool isHeatMode = false;
 
 
     public void OnAttack()

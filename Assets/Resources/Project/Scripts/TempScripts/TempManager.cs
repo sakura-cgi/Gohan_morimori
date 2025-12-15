@@ -1,9 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// 体温の減少処理はDashTempManagerが担当する
+
 public class TempManager : MonoBehaviour
 {
     public int temp;
+    public int basic_temp;
     public GameObject temp_object = null; // Textオブジェクト
     public Slider temp_slider = null; // Sliderオブジェクト
 
@@ -15,6 +18,7 @@ public class TempManager : MonoBehaviour
         {
             temp_slider.value = temp;
         }
+
     }
 
     // Update is called once per frame

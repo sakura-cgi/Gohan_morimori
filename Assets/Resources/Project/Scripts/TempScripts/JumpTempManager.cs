@@ -6,7 +6,7 @@ public class JumpTempManager : MonoBehaviour
 
     private float firstActionTime;   // 1回目の入力時間
     private float lastInputTime;     // 最後に入力された時間
-    private bool isHeatMode = false;
+    public bool isHeatMode = false;
 
 
     public void OnJump()

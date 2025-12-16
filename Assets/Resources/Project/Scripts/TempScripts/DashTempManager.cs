@@ -7,7 +7,7 @@ public class DashTempManager : MonoBehaviour
     [SerializeField] private float LimitTime = 3f;
     [SerializeField] private PlayerMovement playermovement;
     [SerializeField] private JumpTempManager jumpTempManager;
- [SerializeField] private AttackTempManager attackTempManager;
+    [SerializeField] private AttackTempManager attackTempManager;
 
     private float firstActionTime;   // 1回目の入力時間
     private bool lastDashState = false;
@@ -15,6 +15,7 @@ public class DashTempManager : MonoBehaviour
     private float heatInterval = 1f; // 温度上昇の間隔
     private float dashendtime;
     private float lastcooltime;
+    private float lasthottime; ///基本体温以下の際の温度上昇用
 
     private TempManager tempManager;
     private void Awake()
@@ -71,6 +72,15 @@ public class DashTempManager : MonoBehaviour
                         Debug.Log("Cooling -1");
                     }
                 }
+            }
+        }
+        if (tempManager.temp < tempManager.basic_temp)
+        {
+            if (now - lasthottime >= heatInterval)
+            {
+                tempManager.temp++;
+                lasthottime = now;
+                Debug.Log("Heating +1");
             }
         }
 

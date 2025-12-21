@@ -6,6 +6,16 @@ public class AttackSensor : MonoBehaviour
     private string GenseiEnemyTag = "Enemy_Gensei";
     private string RobotEnemyTag = "Enemy_Robot";
 
+    public AudioClip genseiHitSE;
+    public AudioClip robotHitSE;
+
+    private AudioSource audioSource;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
 
     // Update is called once per frame
     private void OnTriggerEnter2D(Collider2D other)
@@ -16,6 +26,8 @@ public class AttackSensor : MonoBehaviour
             {
                 Debug.Log("原生生物を攻撃した！");
                 Destroy(other.gameObject);
+                audioSource.PlayOneShot(genseiHitSE);
+
             }
             else if (attackmode == 1)
             {
@@ -29,6 +41,7 @@ public class AttackSensor : MonoBehaviour
             {
                 Debug.Log("ロボットを攻撃した！");
                 Destroy(other.gameObject);
+                audioSource.PlayOneShot(robotHitSE);
             }
             else if (attackmode == 0)
             {

@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isAttacking = false;
     private float moveInput;
 
+    public bool isKnockback;
+
     [SerializeField] float maxJumpHeight = 3f; // 最大ジャンプ高度
     private float jumpStartY;                  // ジャンプ開始時のY座標
     private bool isJumping = false;            // ジャンプ中かどうか
@@ -110,6 +112,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(GetComponent<EnemyScript>().isInvincible) return;
         if (!isJumping)
         {
             float currentSpeed = isDashing ? dashForce : moveSpeed;

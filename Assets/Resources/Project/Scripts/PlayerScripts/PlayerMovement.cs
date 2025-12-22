@@ -11,15 +11,20 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
     private bool isGrounded;
-    private bool isDashing = false;
+    public bool isDashing = false;
+
     private bool isAttacking = false;
     private float moveInput;
+
+    public bool isKnockback;
 
     [SerializeField] float maxJumpHeight = 3f; // 最大ジャンプ高度
     private float jumpStartY;                  // ジャンプ開始時のY座標
     private bool isJumping = false;            // ジャンプ中かどうか
 
-    public HeatEventReceiver heatReceiver;
+   [SerializeField] public JumpTempManager jumptempmanager;
+
+    [SerializeField]private AttackTempManager attacktempmanager;
     
     void Start()
     {
@@ -39,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
             jumpStartY = transform.position.y;
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 
-            heatReceiver.OnJump();
+           jumptempmanager.OnJump();
         }
 
         // --- ジャンプ中の処理 ---
@@ -63,7 +68,6 @@ public class PlayerMovement : MonoBehaviour
             isDashing = true;
             anim.SetBool("isDashing", true);
 
-            heatReceiver.OnDash();
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
@@ -76,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
             isAttacking = true;
             anim.SetBool("isAttacking", true);
 
-            heatReceiver.OnAttack();
+            attacktempmanager.OnAttack();
         }
         else if (Input.GetKeyUp(KeyCode.LeftControl))
         {
@@ -110,6 +114,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(GetComponent<EnemyScript>().isInvincible) return;
         if (!isJumping)
         {
             float currentSpeed = isDashing ? dashForce : moveSpeed;

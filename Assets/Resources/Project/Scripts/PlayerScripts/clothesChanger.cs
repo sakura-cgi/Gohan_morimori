@@ -2,63 +2,72 @@ using UnityEngine;
 
 public class clothesChanger : MonoBehaviour
 {
-public SpriteRenderer clothesRenderer;
+    public SpriteRenderer clothesRenderer;
 
-// clothSprites[motion][cloth][frame]
-public Sprite[][][] clothSprites;
+    // clothSprites[motion][cloth][frame]
+    public Sprite[][][] clothSprites;
 
-// AnimatorのMotion
-private string[] motions = { "idle", "walk", "dash", "attack" };
+    // AnimatorのMotion
+    private string[] motions = { "idle", "walk", "dash", "attack" };
 
-private Animator animator;
+    private Animator animator;
 
-public int currentClothes = 0;
+    public int currentClothes = 0;
+    [SerializeField] private TempManager tempManager;
 
-void Start()
-{
-    animator = GetComponentInChildren<Animator>();
-    
-    int clothesCount = 5;
-    int motionCount = motions.Length;
-
-    clothSprites = new Sprite[motionCount][][];
-
-    for (int m = 0; m < motionCount; m++)
+    void Start()
     {
-        clothSprites[m] = new Sprite[clothesCount][];
+        animator = GetComponentInChildren<Animator>();
 
-        for (int c = 0; c < clothesCount; c++)
+        int clothesCount = 5;
+        int motionCount = motions.Length;
+
+        clothSprites = new Sprite[motionCount][][];
+
+        for (int m = 0; m < motionCount; m++)
         {
-            // 例：Resources/Clothes/0_idle
-            string path = $"Clothes/{c}_{motions[m]}";
+            clothSprites[m] = new Sprite[clothesCount][];
 
-            Sprite[] frames = Resources.LoadAll<Sprite>(path);
-
-            if (frames.Length == 0)
+            for (int c = 0; c < clothesCount; c++)
             {
-                Debug.LogWarning($"⚠ 何も読み込めなかった: {path}");
-            }
+                // 例：Resources/Clothes/0_idle
+                string path = $"Clothes/{c}_{motions[m]}";
 
-            clothSprites[m][c] = frames;
+                Sprite[] frames = Resources.LoadAll<Sprite>(path);
+
+                if (frames.Length == 0)
+                {
+                    Debug.LogWarning($"⚠ 何も読み込めなかった: {path}");
+                }
+
+                clothSprites[m][c] = frames;
+            }
         }
+
+        Debug.Log("ロード完了！");
     }
 
-    Debug.Log("ロード完了！");
-}
+    void Update()
+    {
+        var info = animator.GetCurrentAnimatorStateInfo(0);
+        int motion = animator.GetInteger("Motion");
 
-void Update()
-{
-    var info = animator.GetCurrentAnimatorStateInfo(0);
-    int motion = animator.GetInteger("Motion");
+        var frames = clothSprites[motion][currentClothes];
 
-    var frames = clothSprites[motion][currentClothes];
+        int frame = (int)(info.normalizedTime * frames.Length) % frames.Length;
 
-    int frame = (int)(info.normalizedTime * frames.Length) % frames.Length;
+        clothesRenderer.sprite = frames[frame];
+    }
 
-    clothesRenderer.sprite = frames[frame];
-}
-
-public void Wear()   => currentClothes = Mathf.Min(4, currentClothes + 1);
-public void Undress()=> currentClothes = Mathf.Max(0, currentClothes - 1);
+    public void Wear()
+    {  
+    currentClothes = Mathf.Min(4, currentClothes + 1);
+    tempManager.basic_temp += 3;
+    }
+    public void Undress() 
+    {
+     currentClothes = Mathf.Max(0, currentClothes - 1);
+     tempManager.basic_temp -= 3;
+    }
 
 }

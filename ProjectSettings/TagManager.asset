@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - Ground
+  - Stage
+  - Enemy_Gensei
+  - Enemy_Robot
   layers:
   - Default
   - TransparentFX

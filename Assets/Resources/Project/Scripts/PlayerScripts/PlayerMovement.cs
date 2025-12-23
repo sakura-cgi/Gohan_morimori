@@ -128,12 +128,19 @@ public class PlayerMovement : MonoBehaviour
         if (collision.collider.CompareTag("Ground")){
             isGrounded = true;
         }
+        if (collision.collider.CompareTag("breakFloor")){
+            isGrounded = true;
+        }
             
     }
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Ground"))
+        if (collision.collider.CompareTag("Ground")){
             isGrounded = false;
+        }
+            if (collision.collider.CompareTag("breakFloor")){
+            isGrounded = false;
+        }
     }
 }

@@ -6,7 +6,7 @@ public class FloorBreaking : MonoBehaviour
     [SerializeField] private float respawnDelay = 5f; // 復活までの時間
     private bool isBroken = false;
     private float timer = 0f;
-    private Collider2D collider;
+    private new Collider2D collider;
 
     void Start()
     {

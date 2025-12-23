@@ -78,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftControl)&& !isAttacking)
         {
             isAttacking = true;
-            anim.SetTrigger("Attack");
+            anim.SetBool("isAttacking", true);
 
             attacktempmanager.OnAttack();
         }
@@ -101,7 +101,9 @@ public class PlayerMovement : MonoBehaviour
 
 
         // Motionの反映
-        if (isDashing)
+        if (isAttacking)
+            anim.SetInteger("Motion", 3);
+        else if (isDashing)
             anim.SetInteger("Motion", 2);
         else if (isWalking)
             anim.SetInteger("Motion", 1);
@@ -126,12 +128,19 @@ public class PlayerMovement : MonoBehaviour
         if (collision.collider.CompareTag("Ground")){
             isGrounded = true;
         }
+        if (collision.collider.CompareTag("breakFloor")){
+            isGrounded = true;
+        }
             
     }
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Ground"))
+        if (collision.collider.CompareTag("Ground")){
             isGrounded = false;
+        }
+            if (collision.collider.CompareTag("breakFloor")){
+            isGrounded = false;
+        }
     }
 }

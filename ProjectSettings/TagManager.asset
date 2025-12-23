@@ -8,6 +8,7 @@ TagManager:
   - Stage
   - Enemy_Gensei
   - Enemy_Robot
+  - breakFloor
   layers:
   - Default
   - TransparentFX

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class EnemyScript : MonoBehaviour
+public class EnemyCollisionScript : MonoBehaviour
 {
     private string GenseiEnemyTag = "Enemy_Gensei";
     private string RobotEnemyTag = "Enemy_Robot";

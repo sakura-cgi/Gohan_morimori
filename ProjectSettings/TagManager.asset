@@ -9,6 +9,7 @@ TagManager:
   - Enemy_Gensei
   - Enemy_Robot
   - breakFloor
+  - CheckPoint
   layers:
   - Default
   - TransparentFX

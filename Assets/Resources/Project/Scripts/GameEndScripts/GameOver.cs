@@ -1,18 +1,20 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameOver_LowTemp : MonoBehaviour
+public class GameOver : MonoBehaviour
 {
     private bool hasExecuted = false;
+    [SerializeField] private RespawnManager respawnManager;
     void Update()
     {
         if (GetComponent<TempManager>().temp >= 50)
         {
             GameOver_High();
         }
-        if( GetComponent<LifeManager>().life <= 0)
+        if (GetComponent<LifeManager>().life <= 0)
         {
             GameOver_Die();
+            GetComponent<LifeManager>().life = 20;
         }
     }
 
@@ -28,10 +30,7 @@ public class GameOver_LowTemp : MonoBehaviour
     }
     private void GameOver_Die()
     {
-        if (!hasExecuted)
-        {
-            Debug.Log("Game Over: Life Depleted");
-            hasExecuted = true;
-        }
+        Debug.Log("Game Over: Life Depleted");
+        respawnManager.ResetAll();
     }
 }

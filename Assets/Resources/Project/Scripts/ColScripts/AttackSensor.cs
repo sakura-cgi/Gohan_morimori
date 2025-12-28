@@ -25,7 +25,7 @@ public class AttackSensor : MonoBehaviour
             if (attackmode == 0)
             {
                 Debug.Log("原生生物を攻撃した！");
-                Destroy(other.gameObject);
+                other.gameObject.SetActive(false);
                 audioSource.PlayOneShot(genseiHitSE);
 
             }
@@ -40,7 +40,7 @@ public class AttackSensor : MonoBehaviour
             if (attackmode == 1)
             {
                 Debug.Log("ロボットを攻撃した！");
-                Destroy(other.gameObject);
+                other.gameObject.SetActive(false);
                 audioSource.PlayOneShot(robotHitSE);
             }
             else if (attackmode == 0)

@@ -114,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(GetComponent<EnemyScript>().isInvincible) return;
+        if(GetComponent<EnemyCollisionScript>().isInvincible) return;
         if (!isJumping)
         {
             float currentSpeed = isDashing ? dashForce : moveSpeed;

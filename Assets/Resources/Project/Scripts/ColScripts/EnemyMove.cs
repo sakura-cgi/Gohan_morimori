@@ -12,6 +12,7 @@ public class EnemyMove : MonoBehaviour
     private Rigidbody2D rb = null;
     private SpriteRenderer sr = null;
     private bool rightTleftF = false;
+
     #endregion
 
     // Start is called before the first frame update
@@ -30,9 +31,9 @@ void FixedUpdate()
         rb.linearVelocity = new Vector2(x, rb.linearVelocity.y);
 
         if (rightTleftF)
-            transform.localScale = new Vector3(-1, 3, 1);
+            transform.localScale = new Vector3(-1, 1, 1);
         else
-            transform.localScale = new Vector3(1, 3, 1);
+            transform.localScale = new Vector3(1, 1, 1);
     }
     else
     {
@@ -44,5 +45,6 @@ void FixedUpdate()
     {
         rightTleftF = !rightTleftF;
     }
+
 
 }

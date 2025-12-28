@@ -1,11 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
+using UnityEngine.UI;
 
 public class RespawnManager : MonoBehaviour
 {
     public static RespawnManager Instance;
     public List<GameObject> respawnables = new List<GameObject>();
     private Vector3 currentCheckpoint;
+     [SerializeField] private Image fadeImage;
+    public float fadeSpeed = 1f;
 
     void Awake()
     {
@@ -53,4 +57,28 @@ public void ResetAll()
     {
         currentCheckpoint = checkpointPosition;
     }
+
+     public IEnumerator FadeOut()
+    {
+        float alpha = 0f;
+        while (alpha < 1f)
+        {
+            alpha += Time.deltaTime * fadeSpeed;
+            fadeImage.color = new Color(265, 265, 265, alpha);
+            yield return null;
+        }
+    }
+
+    public IEnumerator FadeIn()
+    {
+        float alpha = 1f;
+        while (alpha > 0f)
+        {
+            alpha -= Time.deltaTime * fadeSpeed;
+            fadeImage.color = new Color(265, 265, 265, alpha);
+            yield return null;
+        }
+    }
 }
+
+

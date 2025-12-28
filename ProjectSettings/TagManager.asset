@@ -10,6 +10,7 @@ TagManager:
   - Enemy_Robot
   - breakFloor
   - CheckPoint
+  - Bullet
   layers:
   - Default
   - TransparentFX

@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class DialogManager : MonoBehaviour
 {
+    public static DialogManager Instance;
     public Sprite[] Dialogs;
     public bool isTalking;
     [SerializeField] private Image dialogUI;
@@ -10,9 +11,17 @@ public class DialogManager : MonoBehaviour
     private int endIndex;
     private bool JustStart;
 
-    void Start()
+    void Awake()
     {
-        dialogUI.enabled = false;
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+                dialogUI.enabled = false;
     }
 
     // Update is called once per frame
@@ -40,6 +49,7 @@ public class DialogManager : MonoBehaviour
 
         dialogUI.enabled = true;
         dialogUI.sprite = Dialogs[currentIndex];
+        Time.timeScale = 0f; // ゲームを一時停止
         Debug.Log("Dialog Started");
     }
 
@@ -62,6 +72,7 @@ public class DialogManager : MonoBehaviour
     {
         isTalking = false;
         dialogUI.enabled = false;
+        Time.timeScale = 1f; // ゲームを再開
         Debug.Log("Dialog Ended");
     }
 

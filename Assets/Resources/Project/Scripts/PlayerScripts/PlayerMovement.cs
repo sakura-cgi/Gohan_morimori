@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
-    
+
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float dashForce = 12.0f;
     [SerializeField] float jumpForce = 7f;
@@ -22,10 +22,11 @@ public class PlayerMovement : MonoBehaviour
     private float jumpStartY;                  // ジャンプ開始時のY座標
     private bool isJumping = false;            // ジャンプ中かどうか
 
-   [SerializeField] public JumpTempManager jumptempmanager;
+    [SerializeField] public JumpTempManager jumptempmanager;
 
-    [SerializeField]private AttackTempManager attacktempmanager;
-    
+    [SerializeField] private AttackTempManager attacktempmanager;
+    [SerializeField] private LifeManager lifeManager;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -34,6 +35,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (lifeManager.isDead)return;
+
+
         // --- 入力処理 ---
         moveInput = Input.GetAxisRaw("Horizontal");
 
@@ -44,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
             jumpStartY = transform.position.y;
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 
-           jumptempmanager.OnJump();
+            jumptempmanager.OnJump();
         }
 
         // --- ジャンプ中の処理 ---
@@ -75,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // --- 攻撃 ---
-        if (Input.GetKeyDown(KeyCode.LeftControl)&& !isAttacking)
+        if (Input.GetKeyDown(KeyCode.LeftControl) && !isAttacking)
         {
             isAttacking = true;
             anim.SetBool("isAttacking", true);
@@ -114,7 +118,13 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(GetComponent<EnemyCollisionScript>().isInvincible) return;
+        if (lifeManager.isDead)
+        {
+            anim.SetInteger("Motion", 0); // Idle固定
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+        if (GetComponent<EnemyCollisionScript>().isInvincible) return;
         if (!isJumping)
         {
             float currentSpeed = isDashing ? dashForce : moveSpeed;
@@ -125,21 +135,25 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Ground")){
+        if (collision.collider.CompareTag("Ground"))
+        {
             isGrounded = true;
         }
-        if (collision.collider.CompareTag("breakFloor")){
+        if (collision.collider.CompareTag("breakFloor"))
+        {
             isGrounded = true;
         }
-            
+
     }
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Ground")){
+        if (collision.collider.CompareTag("Ground"))
+        {
             isGrounded = false;
         }
-            if (collision.collider.CompareTag("breakFloor")){
+        if (collision.collider.CompareTag("breakFloor"))
+        {
             isGrounded = false;
         }
     }

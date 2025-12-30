@@ -8,6 +8,7 @@ public class AttackScript : MonoBehaviour
     [SerializeField] private TempManager tempManager;
     private static int overHeatTemp = 40;
     private static int overCoolTemp = 30;
+    public int attackAnim; // 0: 火炎放射 1: 冷凍光線 2:攻撃していない
     private void Awake()
     {
         attackSensor = AttackSensorObject.GetComponent<AttackSensor>();
@@ -20,18 +21,21 @@ public class AttackScript : MonoBehaviour
         if (tempManager.temp <= overHeatTemp && tempManager.temp >= overCoolTemp)
         {
             AttackSensorObject.SetActive(false);
+            attackAnim = 2;
             return;
         }
         if (Input.GetMouseButton(0))
         {
             if (tempManager.temp >= 41)
             {
-                attackSensor.attackmode = 0; // 冷凍攻撃
+                attackSensor.attackmode = 0; // 火炎放射
+                attackAnim = 0;
                 AttackSensorObject.SetActive(true);
             }
             else if (tempManager.temp <= 29)
             {
-                attackSensor.attackmode = 1; // 火炎攻撃
+                attackSensor.attackmode = 1; // 冷凍光線
+                attackAnim = 1;
                 AttackSensorObject.SetActive(true);
             }
             else
@@ -41,6 +45,7 @@ public class AttackScript : MonoBehaviour
         }
         else
         {
+            attackAnim = 2;
             AttackSensorObject.SetActive(false);
         }
 

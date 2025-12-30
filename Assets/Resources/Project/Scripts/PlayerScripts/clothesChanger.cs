@@ -8,7 +8,7 @@ public class clothesChanger : MonoBehaviour
     public Sprite[][][] clothSprites;
 
     // AnimatorのMotion
-    private string[] motions = { "idle", "walk", "dash", "attack" };
+    private string[] motions = { "idle", "walk", "dash", "FireAttack", "IceAttack" };
 
     private Animator animator;
 

@@ -11,6 +11,7 @@ public class JumpTempManager : MonoBehaviour
 
     public void OnJump()
     {
+        if (Time.timeScale == 0f) return; // ポーズ中は処理しない
         CountJump();
         Debug.Log("Jump action registered to HeatManager.");
 

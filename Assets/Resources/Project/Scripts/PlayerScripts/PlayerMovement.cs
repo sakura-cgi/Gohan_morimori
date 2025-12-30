@@ -1,3 +1,4 @@
+using UnityEditor.Rendering;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -14,7 +15,6 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;
     public bool isDashing = false;
 
-    private bool isAttacking = false;
     private float moveInput;
 
     public bool isKnockback;
@@ -37,13 +37,13 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (lifeManager.isDead)return;
+        if (lifeManager.isDead) return;
 
 
-            moveSpeed = 5f - 0.5f * clothes.currentClothes;
-            dashForce = 10f - 1f * clothes.currentClothes;
-            jumpForce = 5f - 0.5f * clothes.currentClothes;
-            maxJumpHeight = 5f - 0.2f * clothes.currentClothes;
+        moveSpeed = 5f - 0.5f * clothes.currentClothes;
+        dashForce = 10f - 1f * clothes.currentClothes;
+        jumpForce = 5f - 0.5f * clothes.currentClothes;
+        maxJumpHeight = 5f - 0.2f * clothes.currentClothes;
 
 
         // --- 入力処理 ---
@@ -86,18 +86,7 @@ public class PlayerMovement : MonoBehaviour
             isDashing = false;
         }
 
-        // --- 攻撃 ---
-        if (Input.GetKeyDown(KeyCode.LeftControl) && !isAttacking)
-        {
-            isAttacking = true;
-            anim.SetBool("isAttacking", true);
 
-            attacktempmanager.OnAttack();
-        }
-        else if (Input.GetKeyUp(KeyCode.LeftControl))
-        {
-            isAttacking = false;
-        }
 
         // --- 向き反転 ---
         if (moveInput > 0)
@@ -109,12 +98,14 @@ public class PlayerMovement : MonoBehaviour
         bool isWalking = Mathf.Abs(moveInput) > 0.1f && !isDashing;
         anim.SetBool("isWalking", isWalking);
         anim.SetBool("isDashing", isDashing);
-        anim.SetBool("isAttacking", isAttacking);
+        anim.SetInteger("AttackMode", GetComponent<AttackScript>().attackAnim);
 
 
         // Motionの反映
-        if (isAttacking)
-            anim.SetInteger("Motion", 3);
+        if(GetComponent<AttackScript>().attackAnim == 0)
+            anim.SetInteger("Motion", 3); // FireAttack
+        else if(GetComponent<AttackScript>().attackAnim == 1)
+            anim.SetInteger("Motion", 4); // IceAttack +3している
         else if (isDashing)
             anim.SetInteger("Motion", 2);
         else if (isWalking)
@@ -135,7 +126,15 @@ public class PlayerMovement : MonoBehaviour
         if (GetComponent<EnemyCollisionScript>().isInvincible) return;
         if (!isJumping)
         {
-            float currentSpeed = isDashing ? dashForce : moveSpeed;
+            float currentSpeed;
+            if (isDashing)
+            {
+                currentSpeed = dashForce;
+            }
+            else
+            {
+                currentSpeed = moveSpeed;
+            }
             rb.linearVelocity = new Vector2(moveInput * currentSpeed, rb.linearVelocity.y);
         }
     }

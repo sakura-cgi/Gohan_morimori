@@ -6,10 +6,11 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float dashForce = 12.0f;
-    [SerializeField] float jumpForce = 7f;
+    [SerializeField] float jumpForce = 5f;
 
     private Rigidbody2D rb;
     private Animator anim;
+    private clothesChanger clothes;
     private bool isGrounded;
     public bool isDashing = false;
 
@@ -31,11 +32,18 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        clothes = GetComponent<clothesChanger>();
     }
 
     void Update()
     {
         if (lifeManager.isDead)return;
+
+
+            moveSpeed = 5f - 0.5f * clothes.currentClothes;
+            dashForce = 10f - 1f * clothes.currentClothes;
+            jumpForce = 5f - 0.5f * clothes.currentClothes;
+            maxJumpHeight = 5f - 0.2f * clothes.currentClothes;
 
 
         // --- 入力処理 ---

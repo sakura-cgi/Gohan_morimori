@@ -60,14 +60,16 @@ public class clothesChanger : MonoBehaviour
     }
 
     public void Wear()
-    {  
-    currentClothes = Mathf.Min(4, currentClothes + 1);
-    tempManager.basic_temp += 3;
-    }
-    public void Undress() 
     {
-     currentClothes = Mathf.Max(0, currentClothes - 1);
-     tempManager.basic_temp -= 3;
+        if (currentClothes >= 4) return;
+        currentClothes += 1;
+        tempManager.basic_temp += 3;
+    }
+    public void Undress()
+    {
+        if (currentClothes <= 0) return;
+        currentClothes -= 1;
+        tempManager.basic_temp -= 3;
     }
 
 }

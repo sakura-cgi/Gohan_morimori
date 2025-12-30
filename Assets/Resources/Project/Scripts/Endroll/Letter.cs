@@ -5,7 +5,7 @@ public class Letter : MonoBehaviour
     public int maxHP = 5;   // 文字の耐久値
     private int currentHP;
 
-    public float moveSpeed = -0.01f;   // 左にスクロール
+    private float moveSpeed = -4f;   // 左にスクロール
     public float stopX = 0;         // 文字を止める位置
     [SerializeField]private Shooting shooting;
     public int LetterNum;
@@ -19,7 +19,7 @@ public class Letter : MonoBehaviour
         if(shooting.DisplayNum == LetterNum){
         // 左に移動し、stopXで止まる
         Vector3 pos = transform.position;
-        pos.x += moveSpeed;
+        pos.x += moveSpeed * Time.deltaTime;
         if (pos.x < stopX){ 
             pos.x = stopX;
             shooting.ismoving = false;
@@ -29,6 +29,10 @@ public class Letter : MonoBehaviour
                 shooting.ismoving = true;
             }
         transform.position = pos;
+        }
+        if(shooting.DisplayNum > LetterNum)
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -52,7 +56,6 @@ public class Letter : MonoBehaviour
 
     void Die()
     {
-        shooting.DisplayNum++; //次の文字を動かす
         Destroy(gameObject); // 文字を消す
     }
 }

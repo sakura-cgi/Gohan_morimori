@@ -60,6 +60,7 @@ public void ResetAll()
 
      public IEnumerator FadeOut()
     {
+        fadeImage.gameObject.SetActive(true);
         float alpha = 0f;
         while (alpha < 1f)
         {
@@ -78,6 +79,7 @@ public void ResetAll()
             fadeImage.color = new Color(265, 265, 265, alpha);
             yield return null;
         }
+        fadeImage.gameObject.SetActive(false);
     }
 }
 

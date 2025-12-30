@@ -10,6 +10,8 @@ public class Shooting : MonoBehaviour
 
     public bool ismoving;
     public int DisplayNum = 0;
+    public float interval = 10f;
+    public float timer = 0f;
 
     void Update()
     {
@@ -24,6 +26,15 @@ public class Shooting : MonoBehaviour
 
         Vector3 move = new Vector3(0, vertical * moveSpeed * Time.deltaTime, 0);
         transform.position += move;
+        if(timer > interval)
+        {
+            DisplayNum++;
+            timer = 0f;
+        }
+        else
+        {
+            timer += Time.deltaTime;
+        }
     }
 
     private void Shoot()

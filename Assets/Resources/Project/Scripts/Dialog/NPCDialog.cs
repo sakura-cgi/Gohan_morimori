@@ -6,6 +6,7 @@ public class NPCDialog : MonoBehaviour
     public int EndNum;
     private bool playerInRange = false;
     [SerializeField] private DialogManager dialogManager;
+    private bool canTalk = true;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -22,9 +23,19 @@ public class NPCDialog : MonoBehaviour
     private void Update()
     {
         if (!playerInRange) return;
-        if(dialogManager.isTalking) return;
+        if (dialogManager.isTalking)
+        {
+            canTalk = false;
+            return;
+        }
 
-        if (Input.GetKeyDown(KeyCode.Return))
+        // Enterを離したら再びOK
+        if (!Input.GetKey(KeyCode.Return))
+        {
+            canTalk = true;
+        }
+
+        if (canTalk && Input.GetKeyDown(KeyCode.Return))
         {
             dialogManager.StartDialog(StartNum, EndNum);
         }

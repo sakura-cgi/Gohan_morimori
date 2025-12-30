@@ -21,7 +21,7 @@ public class DialogManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-                dialogUI.enabled = false;
+        dialogUI.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -47,7 +47,7 @@ public class DialogManager : MonoBehaviour
         endIndex = end;
         JustStart = true;
 
-        dialogUI.enabled = true;
+        dialogUI.gameObject.SetActive(true);
         dialogUI.sprite = Dialogs[currentIndex];
         Time.timeScale = 0f; // ゲームを一時停止
         Debug.Log("Dialog Started");
@@ -71,7 +71,7 @@ public class DialogManager : MonoBehaviour
     private void EndDialog()
     {
         isTalking = false;
-        dialogUI.enabled = false;
+        dialogUI.gameObject.SetActive(false);
         Time.timeScale = 1f; // ゲームを再開
         Debug.Log("Dialog Ended");
     }

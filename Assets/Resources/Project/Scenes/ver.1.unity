@@ -5638,30 +5638,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 657440432010786747, guid: 34979f77d9516104487ac4ebcaf781c9, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.14167301
-      objectReference: {fileID: 0}
-    - target: {fileID: 657440432010786747, guid: 34979f77d9516104487ac4ebcaf781c9, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.14167301
-      objectReference: {fileID: 0}
-    - target: {fileID: 657440432010786747, guid: 34979f77d9516104487ac4ebcaf781c9, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.14167301
-      objectReference: {fileID: 0}
-    - target: {fileID: 657440432010786747, guid: 34979f77d9516104487ac4ebcaf781c9, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.11
-      objectReference: {fileID: 0}
-    - target: {fileID: 2101271762908034230, guid: 34979f77d9516104487ac4ebcaf781c9, type: 3}
-      propertyPath: robotHitSE
-      value: 
-      objectReference: {fileID: 8300000, guid: e6c188e3bc9c70b439e54698d2f26ca3, type: 3}
-    - target: {fileID: 2101271762908034230, guid: 34979f77d9516104487ac4ebcaf781c9, type: 3}
-      propertyPath: genseiHitSE
-      value: 
-      objectReference: {fileID: 8300000, guid: b34cbdaeb09adcf4d8d60e355d91d3c1, type: 3}
     - target: {fileID: 4382624399872127059, guid: 34979f77d9516104487ac4ebcaf781c9, type: 3}
       propertyPath: jumptempmanager
       value: 
@@ -5713,22 +5689,6 @@ PrefabInstance:
     - target: {fileID: 5579864810689382300, guid: 34979f77d9516104487ac4ebcaf781c9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7988080007684443225, guid: 34979f77d9516104487ac4ebcaf781c9, type: 3}
-      propertyPath: m_Size.x
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 7988080007684443225, guid: 34979f77d9516104487ac4ebcaf781c9, type: 3}
-      propertyPath: m_Size.y
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 7988080007684443225, guid: 34979f77d9516104487ac4ebcaf781c9, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 244d8b5d86b4df646982ec85397e47fb, type: 3}
-    - target: {fileID: 7988080007684443225, guid: 34979f77d9516104487ac4ebcaf781c9, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8423656862575026748, guid: 34979f77d9516104487ac4ebcaf781c9, type: 3}
       propertyPath: tempManager

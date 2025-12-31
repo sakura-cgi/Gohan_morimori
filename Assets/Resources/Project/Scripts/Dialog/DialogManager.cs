@@ -7,7 +7,7 @@ public class DialogManager : MonoBehaviour
     public Sprite[] Dialogs;
     public bool isTalking;
     [SerializeField] private Image dialogUI;
-    private int currentIndex;
+    public int currentIndex = 0;
     private int endIndex;
     private bool JustStart;
 

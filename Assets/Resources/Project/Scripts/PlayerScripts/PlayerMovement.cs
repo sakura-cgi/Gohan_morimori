@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private AttackTempManager attacktempmanager;
     [SerializeField] private LifeManager lifeManager;
+    [SerializeField]private DialogManager dialogManager;
 
     void Start()
     {
@@ -38,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         if (lifeManager.isDead) return;
+        if(dialogManager.isTalking) return;
 
 
         moveSpeed = 5f - 0.5f * clothes.currentClothes;
@@ -124,6 +126,7 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
         if (GetComponent<EnemyCollisionScript>().isInvincible) return;
+        if(dialogManager.isTalking) return;
         if (!isJumping)
         {
             float currentSpeed;

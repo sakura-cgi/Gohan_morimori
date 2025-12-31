@@ -9,6 +9,10 @@ public class PrologueDialog : MonoBehaviour
     private int currentIndex;
     [SerializeField] private Image fadeImage;
     public float fadeSpeed = 1f;
+    private float waitTimer = 0f;
+    private float inputCooldown = 1f; // 1秒
+    private float inputTimer = 0f;
+    private bool inputLocked = false;
 
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip warningSE;
@@ -27,6 +31,23 @@ public class PrologueDialog : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        waitTimer += Time.deltaTime;
+        if (inputLocked)
+        {
+            inputTimer += Time.deltaTime;
+            if (inputTimer >= inputCooldown)
+            {
+                inputLocked = false;
+                inputTimer = 0f;
+            }
+            return;
+        }
+        if (waitTimer > 5f)
+        {
+            HandleStep();
+            waitTimer = 0;
+            return;
+        }
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
@@ -38,6 +59,7 @@ public class PrologueDialog : MonoBehaviour
 
     private void HandleStep()
     {
+        inputLocked = true;
         switch (currentIndex)
         {
             case 0:

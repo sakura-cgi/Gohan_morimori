@@ -49,6 +49,13 @@ public class clothesChanger : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Wear();
+        }else if(Input.GetKeyDown(KeyCode.E))
+        {
+            Undress();
+        }
         var info = animator.GetCurrentAnimatorStateInfo(0);
         int motion = animator.GetInteger("Motion");
 

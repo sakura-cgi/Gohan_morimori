@@ -22,24 +22,24 @@ public class EnemyMove : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
     }
 
-void FixedUpdate()
-{
-    if (sr.isVisible || nonVisibleAct)
+    void FixedUpdate()
     {
-        float x = rightTleftF ? speed : -speed;
+        if (sr.isVisible || nonVisibleAct)
+        {
+            float x = rightTleftF ? speed : -speed;
 
-        rb.linearVelocity = new Vector2(x, rb.linearVelocity.y);
+            rb.linearVelocity = new Vector2(x, rb.linearVelocity.y);
 
-        if (rightTleftF)
-            transform.localScale = new Vector3(-1, 1, 1);
+            if (rightTleftF)
+                transform.localScale = new Vector3(-1, 1, 1);
+            else
+                transform.localScale = new Vector3(1, 1, 1);
+        }
         else
-            transform.localScale = new Vector3(1, 1, 1);
+        {
+            rb.Sleep();
+        }
     }
-    else
-    {
-        rb.Sleep();
-    }
-}
 
     public void Turn()
     {

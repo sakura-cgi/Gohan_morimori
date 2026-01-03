@@ -1,17 +1,21 @@
 using UnityEngine;
 using UnityEngine.Analytics;
+using UnityEngine.InputSystem.OSX;
 
 public class AttackScript : MonoBehaviour
 {
     private AttackSensor attackSensor;
+    private Animator anim;
     [SerializeField] private GameObject AttackSensorObject;
     [SerializeField] private TempManager tempManager;
     private static int overHeatTemp = 40;
     private static int overCoolTemp = 30;
-    public int attackAnim; // 0: 火炎放射 1: 冷凍光線 2:攻撃していない
+    public int attackAnim = 2; // 0: 火炎放射 1: 冷凍光線 2:攻撃していない
+    public bool isAttacking;
     private void Awake()
     {
         attackSensor = AttackSensorObject.GetComponent<AttackSensor>();
+        anim = GetComponent<Animator>();
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -20,22 +24,56 @@ public class AttackScript : MonoBehaviour
     {
         if (tempManager.temp <= overHeatTemp && tempManager.temp >= overCoolTemp)
         {
+            if (isAttacking)
+            {
+                if (attackAnim == 0)
+                {
+                    EndFireAttack();
+                }
+                else if (attackAnim == 1)
+                {
+                    EndIceAttack();
+                }
+            }
             AttackSensorObject.SetActive(false);
             attackAnim = 2;
+            isAttacking = false;
             return;
         }
-        if (Input.GetMouseButton(0))
+        if (!PlayerMovement.Instance.isGrounded)
+        {
+            AttackSensorObject.SetActive(false);
+            if (isAttacking)
+            {
+                if (attackAnim == 0)
+                {
+                    EndFireAttack();
+                }
+                else if (attackAnim == 1)
+                {
+                    EndIceAttack();
+                }
+            }
+            attackAnim = 2;
+            isAttacking = false;
+            return;
+        }
+        if (Input.GetMouseButtonDown(0))
         {
             if (tempManager.temp >= 41)
             {
                 attackSensor.attackmode = 0; // 火炎放射
                 attackAnim = 0;
+                isAttacking = true;
+                StartFireAttack();
                 AttackSensorObject.SetActive(true);
             }
             else if (tempManager.temp <= 29)
             {
                 attackSensor.attackmode = 1; // 冷凍光線
                 attackAnim = 1;
+                isAttacking = true;
+                StartIceAttack();
                 AttackSensorObject.SetActive(true);
             }
             else
@@ -43,11 +81,57 @@ public class AttackScript : MonoBehaviour
                 return;
             }
         }
-        else
+        if (Input.GetMouseButtonUp(0))
         {
+            if (isAttacking)
+            {
+                if (attackAnim == 0)
+                {
+                    EndFireAttack();
+                }
+                else if (attackAnim == 1)
+                {
+                    EndIceAttack();
+                }
+            }
             attackAnim = 2;
+            isAttacking = false;
             AttackSensorObject.SetActive(false);
         }
 
     }
+
+    void StartFireAttack()
+    {
+        anim.SetInteger("Motion", 3);
+    }
+    void StartIceAttack()
+    {
+        anim.SetInteger("Motion", 6);
+    }
+
+    void EndFireAttack()
+    {
+        anim.SetInteger("Motion", 5); // FireAttack_End
+    }
+
+    void EndIceAttack()
+    {
+        anim.SetInteger("Motion", 8); // FireAttack_End
+    }
+    public void FireLoop()
+    {
+        anim.SetInteger("Motion", 4); // FireAttack_Loop
+    }
+
+    public void IceLoop()
+    {
+        anim.SetInteger("Motion", 7); // IceAttack_Loop
+    }
+
+    public void EndAttack()
+    {
+        anim.SetInteger("Motion",0);
+    }
+
 }

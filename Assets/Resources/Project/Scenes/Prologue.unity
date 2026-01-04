@@ -593,7 +593,8 @@ MonoBehaviour:
   warningSE: {fileID: 8300000, guid: 5f303d3c2662f9b4ca1b425079d85894, type: 3}
   crashSE: {fileID: 8300000, guid: 2f824118b488fd44fb408d01571556cb, type: 3}
   NoticeSE: {fileID: 8300000, guid: e6c188e3bc9c70b439e54698d2f26ca3, type: 3}
-  SnowSE: {fileID: 8300000, guid: b34cbdaeb09adcf4d8d60e355d91d3c1, type: 3}
+  SnowSE: {fileID: 8300000, guid: 1a191e4c7b7e3174fb2378f22da3a6f0, type: 3}
+  PageNext: {fileID: 8300000, guid: c2628ac3bb9623049969817e0e2b475e, type: 3}
 --- !u!82 &1662910322
 AudioSource:
   m_ObjectHideFlags: 0

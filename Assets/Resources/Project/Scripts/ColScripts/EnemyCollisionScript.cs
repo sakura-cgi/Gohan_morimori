@@ -6,7 +6,7 @@ public class EnemyCollisionScript : MonoBehaviour
     private string GenseiEnemyTag = "Enemy_Gensei";
     private string RobotEnemyTag = "Enemy_Robot";
 
-    public bool isInvincible;
+    public bool isInvincible = false;
 
     [SerializeField] private LifeManager lifeManager;
 

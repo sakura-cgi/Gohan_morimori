@@ -19,6 +19,7 @@ public class clothesChanger : MonoBehaviour
 
     void Start()
     {
+        currentClothes = GameManager.Instance.clothes;
         animator = GetComponentInChildren<Animator>();
 
         int clothesCount = 5;
@@ -67,6 +68,7 @@ public class clothesChanger : MonoBehaviour
         int frame = (int)(info.normalizedTime * frames.Length) % frames.Length;
 
         clothesRenderer.sprite = frames[frame];
+        GameManager.Instance.clothes = currentClothes;
     }
 
     public void Wear()

@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private AttackTempManager attacktempmanager;
     [SerializeField] private LifeManager lifeManager;
+    private FootSound footsound;
 
     void Awake()
     {
@@ -50,13 +51,19 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         clothes = GetComponent<clothesChanger>();
+        footsound = GetComponent<FootSound>();
     }
 
     void Update()
     {
-        if (lifeManager.isDead) return;
+        if (lifeManager.isDead)
+        {
+            anim.SetInteger("Motion", 0);
+            isDashing = false;
+            jumpHeld = false;
+            return;
+        }
         if (DialogManager.Instance.isTalking) return;
-        ///攻撃モーションの反映
         if (GetComponent<AttackScript>().isAttacking) return;
 
         // ステータス計算
@@ -121,6 +128,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (DialogManager.Instance.isTalking) return;
         if (GetComponent<AttackScript>().attackAnim < 2) return;
+        if(GetComponent<EnemyCollisionScript>().isInvincible == true) return;
 
         // 横移動
         float speed = isDashing ? dashForce : moveSpeed;
@@ -130,6 +138,7 @@ public class PlayerMovement : MonoBehaviour
         if (jumpPressed)
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            footsound.PlayJump();
             isJumping = true;
             jumpPressed = false;
         }

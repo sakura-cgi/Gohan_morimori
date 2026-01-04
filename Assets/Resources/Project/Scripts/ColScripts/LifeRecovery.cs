@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LifeRecovery : MonoBehaviour
 {
@@ -8,7 +9,9 @@ public class LifeRecovery : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             lifeManager.life ++;
+            RecoverySound.Instance.PlaySE();
             Debug.Log("ライフを回復した！");
+            SceneManager.LoadScene("scene2");
             gameObject.SetActive(false);
         }
     }

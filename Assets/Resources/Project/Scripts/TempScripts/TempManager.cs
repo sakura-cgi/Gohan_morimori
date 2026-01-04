@@ -5,12 +5,23 @@ using UnityEngine.UI;
 
 public class TempManager : MonoBehaviour
 {
+    public static TempManager Instance;
     public int temp;
     public int basic_temp;
     public GameObject temp_object = null; // Textオブジェクト
     public Slider temp_slider = null; // Sliderオブジェクト
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     void Start()
     {
         // Sliderの初期値を設定
@@ -18,6 +29,8 @@ public class TempManager : MonoBehaviour
         {
             temp_slider.value = temp;
         }
+        temp =  GameManager.Instance.temp;
+        basic_temp =  GameManager.Instance.basic_temp;
 
     }
 
@@ -32,5 +45,7 @@ public class TempManager : MonoBehaviour
         {
             temp_slider.value = temp;
         }
+        GameManager.Instance.temp = temp;
+        GameManager.Instance.basic_temp = basic_temp;
     }
 }

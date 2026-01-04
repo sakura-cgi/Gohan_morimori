@@ -32,6 +32,7 @@ public class LifeManager : MonoBehaviour
 
     void Start()
     {
+        life = GameManager.Instance.life;
         currentlife = life;
         Updatelife();
     }
@@ -80,6 +81,7 @@ public class LifeManager : MonoBehaviour
         {
             Die();
         }
+        GameManager.Instance.life = life;
 
 
     }
@@ -142,6 +144,7 @@ public class LifeManager : MonoBehaviour
         yield return StartCoroutine(RespawnManager.Instance.FadeOut());
 
         // --- ここでリスポーン処理 ---
+        TempManager.Instance.temp = 35;
         life = 20;
         Updatelife();
         RespawnManager.Instance.ResetAll();

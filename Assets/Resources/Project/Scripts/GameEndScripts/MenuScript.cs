@@ -4,7 +4,14 @@ using System.Collections;
 public class MenuScript : MonoBehaviour
 {
     [SerializeField] private Image fadeImage;
+    [SerializeField] private GameObject TitleAudio;
+    [SerializeField] private AudioClip StartClip;
+    private AudioSource audioSource;
     public float fadeSpeed = 1f;
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -26,12 +33,15 @@ public class MenuScript : MonoBehaviour
     }
     public void StartGame()
     {
+        TitleAudio.SetActive(false);
+        audioSource.PlayOneShot(StartClip);
         StartCoroutine(StartGameCoroutine());
     }
 
     public IEnumerator StartGameCoroutine()
     {
         yield return StartCoroutine(FadeOut());
+        yield return new WaitForSeconds(1f);
         UnityEngine.SceneManagement.SceneManager.LoadScene("Prologue");
     }
 

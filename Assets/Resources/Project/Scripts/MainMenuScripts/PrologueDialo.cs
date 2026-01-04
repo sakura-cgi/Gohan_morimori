@@ -19,6 +19,7 @@ public class PrologueDialog : MonoBehaviour
     [SerializeField] private AudioClip crashSE;
     [SerializeField] private AudioClip NoticeSE;
     [SerializeField] private AudioClip SnowSE;
+    [SerializeField] private AudioClip PageNext;
 
 
     void Awake()
@@ -52,6 +53,7 @@ public class PrologueDialog : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return))
         {
             HandleStep();
+            waitTimer = 0;
         }
 
 
@@ -149,6 +151,7 @@ public class PrologueDialog : MonoBehaviour
 
     void ShowDialog(int index)
     {
+         audioSource.PlayOneShot(PageNext);
         dialogUI.gameObject.SetActive(true);
         dialogUI.sprite = Dialogs[index];
     }

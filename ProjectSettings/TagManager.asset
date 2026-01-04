@@ -9,11 +9,13 @@ TagManager:
   - Enemy_Gensei
   - Enemy_Robot
   - breakFloor
+  - CheckPoint
+  - Bullet
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Haikei
   - Water
   - UI
   - 

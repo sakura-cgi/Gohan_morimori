@@ -9,7 +9,7 @@ public class LifeRecovery : MonoBehaviour
         {
             lifeManager.life ++;
             Debug.Log("ライフを回復した！");
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

@@ -25,6 +25,7 @@ public class DashTempManager : MonoBehaviour
 
     private void Update()
     {
+        if (Time.timeScale == 0f) return; // ポーズ中は処理しない
         float now = Time.time;
         if (!lastDashState && playermovement.isDashing)
         {

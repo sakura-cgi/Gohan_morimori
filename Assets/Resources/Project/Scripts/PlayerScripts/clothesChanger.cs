@@ -8,7 +8,9 @@ public class clothesChanger : MonoBehaviour
     public Sprite[][][] clothSprites;
 
     // AnimatorのMotion
-    private string[] motions = { "idle", "walk", "dash", "attack" };
+    private string[] motions = { "idle", "walk", "dash",
+    "FireAttackStart", "FireAttack", "FireAttackEnd",
+    "IceAttackStart","IceAttack","IceAttackEnd" };
 
     private Animator animator;
 
@@ -49,6 +51,14 @@ public class clothesChanger : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Wear();
+        }
+        else if (Input.GetKeyDown(KeyCode.E))
+        {
+            Undress();
+        }
         var info = animator.GetCurrentAnimatorStateInfo(0);
         int motion = animator.GetInteger("Motion");
 
@@ -60,14 +70,16 @@ public class clothesChanger : MonoBehaviour
     }
 
     public void Wear()
-    {  
-    currentClothes = Mathf.Min(4, currentClothes + 1);
-    tempManager.basic_temp += 3;
-    }
-    public void Undress() 
     {
-     currentClothes = Mathf.Max(0, currentClothes - 1);
-     tempManager.basic_temp -= 3;
+        if (currentClothes >= 4) return;
+        currentClothes += 1;
+        tempManager.basic_temp += 3;
+    }
+    public void Undress()
+    {
+        if (currentClothes <= 0) return;
+        currentClothes -= 1;
+        tempManager.basic_temp -= 3;
     }
 
 }

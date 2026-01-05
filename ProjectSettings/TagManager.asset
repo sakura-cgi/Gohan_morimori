@@ -11,6 +11,7 @@ TagManager:
   - breakFloor
   - CheckPoint
   - Bullet
+  - AreaTrigger
   layers:
   - Default
   - TransparentFX
@@ -47,6 +48,18 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Back
+    uniqueID: 1676589471
+    locked: 0
+  - name: Chara
+    uniqueID: 3931150739
+    locked: 0
+  - name: Ground
+    uniqueID: 2321414605
+    locked: 0
+  - name: Front
+    uniqueID: 1121739141
     locked: 0
   m_RenderingLayers:
   - Default

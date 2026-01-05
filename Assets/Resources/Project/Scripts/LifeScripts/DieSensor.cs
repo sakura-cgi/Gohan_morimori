@@ -1,12 +1,17 @@
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class DieSensor : MonoBehaviour
 {
-    // Update is called once per frame
-    void Update()
+    private string rakka = "Rakka";
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if(transform.position.y < -15f)
+        
+        if (other.CompareTag(rakka))
         {
+            Debug.Log("死んだ");
             LifeManager.Instance.life = 0;
         }
     }

@@ -14,7 +14,6 @@ public class RecoverySound : MonoBehaviour
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject);
 
         audioSource = GetComponent<AudioSource>();
     }

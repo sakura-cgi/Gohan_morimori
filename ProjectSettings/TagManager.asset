@@ -12,6 +12,7 @@ TagManager:
   - CheckPoint
   - Bullet
   - AreaTrigger
+  - Rakka
   layers:
   - Default
   - TransparentFX

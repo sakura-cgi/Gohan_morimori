@@ -142,7 +142,8 @@ public class LifeManager : MonoBehaviour
 
 
         // フェードアウト
-        yield return StartCoroutine(RespawnManager.Instance.FadeOut());
+        yield return StartCoroutine(RespawnManager.Instance.Die());
+
 
         // --- ここでリスポーン処理 ---
         TempManager.Instance.temp = 35;

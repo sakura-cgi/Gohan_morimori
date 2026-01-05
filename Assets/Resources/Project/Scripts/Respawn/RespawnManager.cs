@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class RespawnManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class RespawnManager : MonoBehaviour
     public List<GameObject> respawnables = new List<GameObject>();
     private Vector3 currentCheckpoint;
      [SerializeField] private Image fadeImage;
+     [SerializeField]private Image AllSaveChallenge;
     public float fadeSpeed = 1f;
 
     void Awake()
@@ -80,6 +82,14 @@ public void ResetAll()
             yield return null;
         }
         fadeImage.gameObject.SetActive(false);
+    }
+
+    public IEnumerator Die()
+    {
+        AllSaveChallenge.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        yield return StartCoroutine(FadeOut());
+        AllSaveChallenge.gameObject.SetActive(false);
     }
 }
 

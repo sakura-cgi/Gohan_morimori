@@ -166,7 +166,7 @@ public class PrologueDialog : MonoBehaviour
 
     void EndDialog()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("ver.1");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Stage1");
     }
 
     public IEnumerator FadeOut()

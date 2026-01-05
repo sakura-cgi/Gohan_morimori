@@ -5,8 +5,7 @@ public class HintUI : MonoBehaviour
 {
     private DialogManager dialogManager;
     [SerializeField] GameObject tempslider;
-    [SerializeField] GameObject tempimage;
-    [SerializeField]GameObject Kabe;
+    [SerializeField] GameObject Kabe;
 
     void Start()
     {
@@ -14,20 +13,22 @@ public class HintUI : MonoBehaviour
     }
     void Update()
     {
-        if(dialogManager.currentIndex < 13) //体温バーの出現
+        if (tempslider != null  && Kabe != null)
         {
-            tempslider.SetActive(false);
-            tempimage.SetActive(false);
-        }else
-        {
-            tempslider.SetActive(true);
-            tempimage.SetActive(true);
+            if (dialogManager.currentIndex < 13) //体温バーの出現
+            {
+                tempslider.SetActive(false);
+            }
+            else
+            {
+                tempslider.SetActive(true);
+            }
+            if (dialogManager.currentIndex == 1)
+            {
+                Kabe.SetActive(false);
+            }
         }
-        if(dialogManager.currentIndex == 1)
-        {
-            Kabe.SetActive(false);
-        }
-        
+
     }
 
 }

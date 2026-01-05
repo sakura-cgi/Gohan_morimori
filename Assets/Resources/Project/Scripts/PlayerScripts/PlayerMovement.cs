@@ -31,7 +31,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public JumpTempManager jumptempmanager;
 
     [SerializeField] private AttackTempManager attacktempmanager;
-    [SerializeField] private LifeManager lifeManager;
     private FootSound footsound;
 
     void Awake()
@@ -56,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (lifeManager.isDead)
+        if (LifeManager.Instance.isDead)
         {
             anim.SetInteger("Motion", 0);
             isDashing = false;
@@ -121,7 +120,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (lifeManager.isDead)
+        if (LifeManager.Instance.isDead)
         {
             rb.linearVelocity = Vector2.zero;
             return;

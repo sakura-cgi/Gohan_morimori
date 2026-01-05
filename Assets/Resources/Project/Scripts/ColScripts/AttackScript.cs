@@ -7,7 +7,6 @@ public class AttackScript : MonoBehaviour
     private AttackSensor attackSensor;
     private Animator anim;
     [SerializeField] private GameObject AttackSensorObject;
-    [SerializeField] private TempManager tempManager;
     private static int overHeatTemp = 40;
     private static int overCoolTemp = 30;
     public int attackAnim = 2; // 0: 火炎放射 1: 冷凍光線 2:攻撃していない
@@ -22,7 +21,7 @@ public class AttackScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (tempManager.temp <= overHeatTemp && tempManager.temp >= overCoolTemp)
+        if ( TempManager.Instance.temp <= overHeatTemp &&  TempManager.Instance.temp >= overCoolTemp)
         {
             if (isAttacking)
             {
@@ -60,7 +59,7 @@ public class AttackScript : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0))
         {
-            if (tempManager.temp >= 41)
+            if ( TempManager.Instance.temp >= 41)
             {
                 attackSensor.attackmode = 0; // 火炎放射
                 attackAnim = 0;
@@ -68,7 +67,7 @@ public class AttackScript : MonoBehaviour
                 StartFireAttack();
                 AttackSensorObject.SetActive(true);
             }
-            else if (tempManager.temp <= 29)
+            else if ( TempManager.Instance.temp <= 29)
             {
                 attackSensor.attackmode = 1; // 冷凍光線
                 attackAnim = 1;

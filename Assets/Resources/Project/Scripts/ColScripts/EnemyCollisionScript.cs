@@ -8,7 +8,6 @@ public class EnemyCollisionScript : MonoBehaviour
 
     public bool isInvincible = false;
 
-    [SerializeField] private LifeManager lifeManager;
 
     #region//接触判定
     private void OnCollisionEnter2D(Collision2D collision)
@@ -34,7 +33,7 @@ public class EnemyCollisionScript : MonoBehaviour
         isInvincible = true;
 
         // ダメージ処理
-        lifeManager.life -= 4;
+        LifeManager.Instance.life -= 4;
 
         // ノックバック（2D）
         var rb = GetComponent<Rigidbody2D>();
@@ -58,7 +57,7 @@ public class EnemyCollisionScript : MonoBehaviour
         isInvincible = true;
 
         // ダメージ処理
-        lifeManager.life -= 4;
+         LifeManager.Instance.life -= 4;
 
         // ノックバック（2D）
         var rb = GetComponent<Rigidbody2D>();

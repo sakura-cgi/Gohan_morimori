@@ -21,7 +21,7 @@ public class Goal : MonoBehaviour
             {
                 StartCoroutine(NextStage());
                 Debug.Log("to2");
-                //SceneManager.LoadScene("Stage2");
+                SceneManager.LoadScene("stage2");
             }
             if (goalnum == 2)
             {

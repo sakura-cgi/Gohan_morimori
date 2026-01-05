@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tempslider: {fileID: 0}
-  tempimage: {fileID: 0}
+  Kabe: {fileID: 0}
 --- !u!114 &6788105168899931923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,7 +258,6 @@ Transform:
   - {fileID: 3241713818236913806}
   - {fileID: 7265305045179334833}
   - {fileID: 5555716689529736499}
-  - {fileID: 706610934939884158}
   - {fileID: 289195270926566221}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -272,7 +271,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3241713818236913806}
   - component: {fileID: 6806989985505518945}
-  - component: {fileID: 6956356272132341067}
   - component: {fileID: 3989023484897196446}
   - component: {fileID: 2797712958534803688}
   - component: {fileID: 943198311190938088}
@@ -315,21 +313,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   temp: 35
   basic_temp: 35
-  temp_object: {fileID: 0}
   temp_slider: {fileID: 0}
---- !u!114 &6956356272132341067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4722307246456409899}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71cb5c8331fba1c4b9acd0d9565ab780, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  temp_object: {fileID: 0}
 --- !u!114 &3989023484897196446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -667,53 +651,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   respawnables: []
   fadeImage: {fileID: 0}
+  AllSaveChallenge: {fileID: 0}
   fadeSpeed: 1
---- !u!1 &8614220867750272874
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 706610934939884158}
-  - component: {fileID: 7114804607786378858}
-  m_Layer: 0
-  m_Name: SnowSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &706610934939884158
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8614220867750272874}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3859331951438480533}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7114804607786378858
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8614220867750272874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ede2f03fed5b50e4da2aec3a5dd9ec1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  snowEffectPrefab: {fileID: 7192817752231256946, guid: 2474ef3f5ece2984681732d236a7cfa2, type: 3}
-  snowSprites:
-  - {fileID: 21300000, guid: 27589fadf224ba64d87842931a917ced, type: 3}
-  - {fileID: 21300000, guid: 8cdb0632377ea284b9dbb1e95da717ba, type: 3}
-  - {fileID: 21300000, guid: 844939d4d20bfd54e9db5d925762ff08, type: 3}

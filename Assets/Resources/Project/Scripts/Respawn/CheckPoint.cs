@@ -3,7 +3,6 @@ using UnityEngine;
 public class CheckPoint : MonoBehaviour
 {
     [SerializeField] private RespawnManager respawnManager;
-    [SerializeField] private LifeManager lifeManager;
 
     private bool NearFire = false;
     private float healTimer = 0f;
@@ -38,7 +37,7 @@ public class CheckPoint : MonoBehaviour
 
             if (healTimer >= healInterval)
             {
-                lifeManager.life += 1;
+                LifeManager.Instance.life += 1;
                 healTimer = 0f;
             }
         }

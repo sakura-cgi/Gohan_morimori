@@ -15,7 +15,6 @@ public class clothesChanger : MonoBehaviour
     private Animator animator;
 
     public int currentClothes = 0;
-    [SerializeField] private TempManager tempManager;
 
     void Start()
     {
@@ -75,13 +74,13 @@ public class clothesChanger : MonoBehaviour
     {
         if (currentClothes >= 4) return;
         currentClothes += 1;
-        tempManager.basic_temp += 3;
+        TempManager.Instance.basic_temp += 3;
     }
     public void Undress()
     {
         if (currentClothes <= 0) return;
         currentClothes -= 1;
-        tempManager.basic_temp -= 3;
+         TempManager.Instance.basic_temp -= 3;
     }
 
 }

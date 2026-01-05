@@ -6,6 +6,7 @@ public class HintUI : MonoBehaviour
     private DialogManager dialogManager;
     [SerializeField] GameObject tempslider;
     [SerializeField] GameObject tempimage;
+    [SerializeField]GameObject Kabe;
 
     void Start()
     {
@@ -13,7 +14,7 @@ public class HintUI : MonoBehaviour
     }
     void Update()
     {
-        if(dialogManager.currentIndex < 2) //体温バーの出現
+        if(dialogManager.currentIndex < 13) //体温バーの出現
         {
             tempslider.SetActive(false);
             tempimage.SetActive(false);
@@ -21,6 +22,10 @@ public class HintUI : MonoBehaviour
         {
             tempslider.SetActive(true);
             tempimage.SetActive(true);
+        }
+        if(dialogManager.currentIndex == 1)
+        {
+            Kabe.SetActive(false);
         }
         
     }

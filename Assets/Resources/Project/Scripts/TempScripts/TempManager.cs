@@ -8,7 +8,6 @@ public class TempManager : MonoBehaviour
     public static TempManager Instance;
     public int temp;
     public int basic_temp;
-    public GameObject temp_object = null; // Textオブジェクト
     public Slider temp_slider = null; // Sliderオブジェクト
 
     void Awake()
@@ -37,8 +36,6 @@ public class TempManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Text temp_text = temp_object.GetComponent<Text>();
-        temp_text.text = "Temp:" + temp;
 
         // Sliderの値を更新
         if (temp_slider != null)

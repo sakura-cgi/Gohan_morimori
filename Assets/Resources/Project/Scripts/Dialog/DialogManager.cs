@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
+using System.Collections.Generic;
 
 public class DialogManager : MonoBehaviour
 {
@@ -10,6 +12,14 @@ public class DialogManager : MonoBehaviour
     public int currentIndex = 0;
     private int endIndex;
     private bool JustStart;
+    private AudioSource audioSource;
+    //音を鳴らしたくない番号
+    private static readonly HashSet<int> noSEIndexes = new HashSet<int>
+    {
+        3939,
+        100,
+        200
+    };
 
     void Awake()
     {
@@ -22,6 +32,7 @@ public class DialogManager : MonoBehaviour
             Destroy(gameObject);
         }
         dialogUI.gameObject.SetActive(false);
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -49,14 +60,21 @@ public class DialogManager : MonoBehaviour
 
         dialogUI.gameObject.SetActive(true);
         dialogUI.sprite = Dialogs[currentIndex];
+        if (!noSEIndexes.Contains(currentIndex))
+        {
+            audioSource.Play();
+        }
+
         Time.timeScale = 0f; // ゲームを一時停止
         Debug.Log("Dialog Started");
     }
 
     private void Next()
     {
+
         currentIndex++;
         Debug.Log("Next");
+
 
         if (currentIndex > endIndex)
         {
@@ -64,6 +82,10 @@ public class DialogManager : MonoBehaviour
         }
         else
         {
+            if (!noSEIndexes.Contains(currentIndex))
+            {
+                audioSource.Play();
+            }
             dialogUI.sprite = Dialogs[currentIndex];
         }
     }

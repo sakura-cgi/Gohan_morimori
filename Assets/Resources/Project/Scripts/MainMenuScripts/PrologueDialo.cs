@@ -8,6 +8,7 @@ public class PrologueDialog : MonoBehaviour
     [SerializeField] private Image dialogUI;
     private int currentIndex;
     [SerializeField] private Image fadeImage;
+    [SerializeField]private Image EarthBound;
     public float fadeSpeed = 1f;
     private float waitTimer = 0f;
     private float inputCooldown = 1f; // 1秒
@@ -65,79 +66,86 @@ public class PrologueDialog : MonoBehaviour
         switch (currentIndex)
         {
             case 0:
+                StartCoroutine(FadeIn());
+                break;
+            case 1:
                 audioSource.PlayOneShot(warningSE);
                 break;
-
-            case 1:
-                audioSource.PlayOneShot(crashSE);
-                break;
-
             case 2:
-                ShowDialog(0); // 主人公「……」
+                StartCoroutine(FadeOut());
                 break;
 
             case 3:
-                ShowDialog(1); // 「………寒い」
+                EarthBound.enabled = false;
+                audioSource.PlayOneShot(crashSE);
                 break;
 
             case 4:
-                ShowDialog(2);
+                ShowDialog(0); // 主人公「……」
                 break;
 
             case 5:
-                ShowDialog(3);
+                ShowDialog(1); // 「………寒い」
                 break;
 
             case 6:
-                ShowDialog(4);
+                ShowDialog(2);
                 break;
 
             case 7:
-                ShowDialog(5);
+                ShowDialog(3);
                 break;
 
             case 8:
-                ShowDialog(6);
+                ShowDialog(4);
                 break;
 
             case 9:
-                audioSource.PlayOneShot(NoticeSE);
+                ShowDialog(5);
                 break;
 
             case 10:
-                ShowDialog(7); // 主人公「…!!!」
+                ShowDialog(6);
                 break;
 
             case 11:
-                ShowDialog(8); // 主人公「ここは…」
+                audioSource.PlayOneShot(NoticeSE);
                 break;
 
             case 12:
-                StartCoroutine(FadeIn());
+                ShowDialog(7); // 主人公「…!!!」
                 break;
 
             case 13:
-                ShowDialog(9); // 【地球】
+                ShowDialog(8); // 主人公「ここは…」
                 break;
 
             case 14:
-                ShowDialog(10);
+                StartCoroutine(FadeIn());
                 break;
 
             case 15:
-                ShowDialog(11);
+                ShowDialog(9); // 【地球】
                 break;
 
             case 16:
-                ShowDialog(12);
+                ShowDialog(10);
                 break;
 
             case 17:
+                ShowDialog(11);
+                break;
+
+            case 18:
+                ShowDialog(12);
+                break;
+
+            case 19:
                 StartCoroutine(FadeOut());
                 StartCoroutine(TextFadeOut());
                 break;
 
-            case 18:
+            case 20:
                 audioSource.PlayOneShot(SnowSE);
                 break;
             default:
@@ -151,7 +159,7 @@ public class PrologueDialog : MonoBehaviour
 
     void ShowDialog(int index)
     {
-         audioSource.PlayOneShot(PageNext);
+        audioSource.PlayOneShot(PageNext);
         dialogUI.gameObject.SetActive(true);
         dialogUI.sprite = Dialogs[index];
     }

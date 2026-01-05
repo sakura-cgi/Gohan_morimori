@@ -15,6 +15,7 @@ public class MainMenuScript : MonoBehaviour
     private void StartGame()
     {
         Debug.Log("Game Started");
+        GameManager.Instance.ResetAll();
         SceneManager.LoadScene("ver.1");  
     }
 }

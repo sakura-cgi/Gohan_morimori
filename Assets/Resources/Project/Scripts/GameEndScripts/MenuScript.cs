@@ -33,6 +33,8 @@ public class MenuScript : MonoBehaviour
     }
     public void StartGame()
     {
+        if(GameManager.Instance)
+        GameManager.Instance.ResetAll();
         TitleAudio.SetActive(false);
         audioSource.PlayOneShot(StartClip);
         StartCoroutine(StartGameCoroutine());

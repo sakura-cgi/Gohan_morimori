@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 public class PauseScript : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    [SerializeField] private GameObject pauseMenuUI; 
-    [SerializeField] private Button resumeButton;     
+    [SerializeField] private GameObject pauseMenuUI;
+    [SerializeField] private Button resumeButton;
     [SerializeField] private Button quitButton;
-    [SerializeField] string MainMenu;  
-     private bool isPaused = false;
+    [SerializeField] string MainMenu;
+    private bool isPaused = false;
     void Start()
     {
         pauseMenuUI.SetActive(false);
@@ -24,7 +24,7 @@ public class PauseScript : MonoBehaviour
         {
             ChangePause();
         }
-        
+
     }
 
     void ChangePause()
@@ -39,7 +39,7 @@ public class PauseScript : MonoBehaviour
         }
     }
 
-     private void PauseGame()
+    private void PauseGame()
     {
         // ゲーム時間を停止
         Time.timeScale = 0f;
@@ -63,6 +63,7 @@ public class PauseScript : MonoBehaviour
     }
     private void QuitGame()
     {
+        Debug.Log("Reset Called");
         Time.timeScale = 1f;
         SceneManager.LoadScene(MainMenu);
         Debug.Log("Game Quit");

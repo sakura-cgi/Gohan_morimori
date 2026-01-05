@@ -5,7 +5,7 @@ using System.Collections;
 
 public class LifeManager : MonoBehaviour
 {
-     public static LifeManager Instance;
+    public static LifeManager Instance;
     public int life = 20;
     public GameObject[] LifeDisplay = new GameObject[5];
     public Sprite[] lifequrter = new Sprite[5];
@@ -18,7 +18,7 @@ public class LifeManager : MonoBehaviour
     private float damageTimer = 0f; // ダメージを与えるためのタイマー
     private float damageInterval = 3f; // ダメージを与える間隔
 
-        void Awake()
+    void Awake()
     {
         if (Instance == null)
         {
@@ -94,6 +94,7 @@ public class LifeManager : MonoBehaviour
         qurterlife = life % 4;
         for (int i = 0; i < LifeDisplay.Length; i++)
         {
+            LifeDisplay[i].GetComponent<Image>().sprite = lifequrter[4];
             if (i == displayLife)
             {
                 LifeDisplay[i].GetComponent<Image>().sprite = lifequrter[4];
@@ -137,7 +138,7 @@ public class LifeManager : MonoBehaviour
         isDead = true;
 
         // 操作停止
-        DialogManager.Instance.isTalking = true; 
+        DialogManager.Instance.isTalking = true;
 
 
         // フェードアウト

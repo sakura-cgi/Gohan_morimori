@@ -41628,7 +41628,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   respawnables: []
   fadeImage: {fileID: 1499109863}
-  AllSaveChallenge: {fileID: 2088102128}
+  die: {fileID: 0}
   fadeSpeed: 1
 --- !u!1 &1638559432
 GameObject:
@@ -45546,17 +45546,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2088102128 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3066415822443862233, guid: b8ae67be684824648b2a6ec252651303, type: 3}
-  m_PrefabInstance: {fileID: 2076119061381709762}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2105790876 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 558512398437406095, guid: 280eca8d752c07049995e46417977d3d, type: 3}

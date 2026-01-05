@@ -10,7 +10,7 @@ public class RespawnManager : MonoBehaviour
     public List<GameObject> respawnables = new List<GameObject>();
     private Vector3 currentCheckpoint;
      [SerializeField] private Image fadeImage;
-     [SerializeField]private Image AllSaveChallenge;
+     [SerializeField]private Image die;
     public float fadeSpeed = 1f;
 
     void Awake()
@@ -86,10 +86,10 @@ public void ResetAll()
 
     public IEnumerator Die()
     {
-        AllSaveChallenge.gameObject.SetActive(true);
+        die.gameObject.SetActive(true);
         yield return new WaitForSeconds(1f);
         yield return StartCoroutine(FadeOut());
-        AllSaveChallenge.gameObject.SetActive(false);
+        die.gameObject.SetActive(false);
     }
 }
 

@@ -34,7 +34,7 @@ public class Shooting : MonoBehaviour
         transform.position += move;
         if (timer > interval)
         {
-            if (DisplayNum != 9)
+            if (DisplayNum != 8)
             {
                 DisplayNum++;
                 timer = 0f;
@@ -53,7 +53,7 @@ public class Shooting : MonoBehaviour
         {
             timer += Time.deltaTime;
         }
-        if (DisplayNum > 9)
+        if (DisplayNum > 8)
         {
             StartCoroutine(LoadtoMain());
 

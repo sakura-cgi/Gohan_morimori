@@ -13,7 +13,7 @@ public class PauseScript : MonoBehaviour
     void Start()
     {
         pauseMenuUI.SetActive(false);
-        resumeButton.onClick.AddListener(ResumeGame);
+        resumeButton.onClick.AddListener(Ending);
         quitButton.onClick.AddListener(QuitGame);
     }
 
@@ -67,5 +67,11 @@ public class PauseScript : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene(MainMenu);
         Debug.Log("Game Quit");
+    }
+
+    private void Ending()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Ending");
     }
 }

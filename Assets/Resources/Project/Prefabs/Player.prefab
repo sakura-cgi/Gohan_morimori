@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8155716571753731921}
   m_Layer: 0
   m_Name: AttackSensor
-  m_TagString: Untagged
+  m_TagString: AttackSensor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -688,7 +688,6 @@ MonoBehaviour:
   isJumping: 0
   jumptempmanager: {fileID: 0}
   attacktempmanager: {fileID: 0}
-  lifeManager: {fileID: 0}
 --- !u!95 &3316394737594040423
 Animator:
   serializedVersion: 7
@@ -725,7 +724,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clothesRenderer: {fileID: 7988080007684443225}
   currentClothes: 0
-  tempManager: {fileID: 0}
 --- !u!114 &9215039023987191624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -739,7 +737,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInvincible: 0
-  lifeManager: {fileID: 0}
 --- !u!114 &5064155683851753566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -753,7 +750,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackSensorObject: {fileID: 244781663168690347}
-  tempManager: {fileID: 0}
   attackAnim: 2
   isAttacking: 0
 --- !u!114 &1313805350393176495
@@ -769,7 +765,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnManager: {fileID: 0}
-  lifeManager: {fileID: 0}
 --- !u!114 &8952116835994967730
 MonoBehaviour:
   m_ObjectHideFlags: 0

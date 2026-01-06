@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.Analytics;
-using UnityEngine.InputSystem.OSX;
 
 public class AttackScript : MonoBehaviour
 {

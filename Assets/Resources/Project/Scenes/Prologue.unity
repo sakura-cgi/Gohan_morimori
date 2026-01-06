@@ -671,7 +671,7 @@ MonoBehaviour:
   crashSE: {fileID: 8300000, guid: 0c4e457b1881a5143adff4002fe85a56, type: 3}
   NoticeSE: {fileID: 8300000, guid: cfa68b1fad7ba9c4f996be5c14d1a111, type: 3}
   SnowSE: {fileID: 8300000, guid: 1a191e4c7b7e3174fb2378f22da3a6f0, type: 3}
-  PageNext: {fileID: 8300000, guid: c2628ac3bb9623049969817e0e2b475e, type: 3}
+  PageNext: {fileID: 8300000, guid: 340c7fdd03570df4fb4feb01ed577ea6, type: 3}
 --- !u!82 &1662910322
 AudioSource:
   m_ObjectHideFlags: 0

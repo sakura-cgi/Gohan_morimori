@@ -13,7 +13,7 @@ public class HintUI : MonoBehaviour
     }
     void Update()
     {
-        if (tempslider != null  && Kabe != null)
+        if (tempslider != null)
         {
             if (dialogManager.currentIndex < 13) //体温バーの出現
             {
@@ -23,6 +23,9 @@ public class HintUI : MonoBehaviour
             {
                 tempslider.SetActive(true);
             }
+        }
+        if(Kabe != null)
+        {
             if (dialogManager.currentIndex == 1)
             {
                 Kabe.SetActive(false);

@@ -13,6 +13,7 @@ TagManager:
   - Bullet
   - AreaTrigger
   - Rakka
+  - AttackSensor
   layers:
   - Default
   - TransparentFX

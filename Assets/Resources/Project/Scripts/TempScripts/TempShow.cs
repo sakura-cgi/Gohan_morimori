@@ -15,13 +15,6 @@ public class TempShow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       TempManager temp_manager = GetComponent<TempManager>();
-        if(Input.GetKeyDown(KeyCode.Z) && temp_manager.temp < 50){
-            temp_manager.temp ++;
-        }
-        else if(Input.GetKeyDown(KeyCode.X) && temp_manager.temp > 20)
-        {
-            temp_manager.temp --;
-        }
+
     }
 }

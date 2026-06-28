@@ -2252,11 +2252,11 @@ PrefabInstance:
     - target: {fileID: 2705350983367419797, guid: 1fb1095490c2d4e468699a2426bf030a, type: 3}
       propertyPath: fadeImage
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2029364448}
     - target: {fileID: 2705350983367419797, guid: 1fb1095490c2d4e468699a2426bf030a, type: 3}
       propertyPath: stageText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1604793042}
     - target: {fileID: 8326284265549160508, guid: 1fb1095490c2d4e468699a2426bf030a, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.8336992
@@ -2271,11 +2271,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8326284265549160508, guid: 1fb1095490c2d4e468699a2426bf030a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 188.3
+      value: 185.5
       objectReference: {fileID: 0}
     - target: {fileID: 8326284265549160508, guid: 1fb1095490c2d4e468699a2426bf030a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 49.3
+      value: 48.4
       objectReference: {fileID: 0}
     - target: {fileID: 8326284265549160508, guid: 1fb1095490c2d4e468699a2426bf030a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3785,7 +3785,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 391034904336211592, guid: 7e45233ecb796674e98938cb613d3e12, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.23
+      value: -6.5
       objectReference: {fileID: 0}
     - target: {fileID: 391034904336211592, guid: 7e45233ecb796674e98938cb613d3e12, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5179,6 +5179,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1604793042 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8067392185046921385, guid: b8ae67be684824648b2a6ec252651303, type: 3}
+  m_PrefabInstance: {fileID: 2029364447}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1608244195
 GameObject:
   m_ObjectHideFlags: 0
@@ -7475,6 +7486,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8067392185046921385, guid: b8ae67be684824648b2a6ec252651303, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ca2c8047bec62ef4099c40d4ccc38562, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

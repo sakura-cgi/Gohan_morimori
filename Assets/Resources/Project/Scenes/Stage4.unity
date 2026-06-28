@@ -299,7 +299,7 @@ Transform:
   m_GameObject: {fileID: 102088895}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 77.5, y: 0, z: 0}
+  m_LocalPosition: {x: 77.5, y: -10.6, z: 0}
   m_LocalScale: {x: 3.847359, y: 47.02618, z: 6.2255}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4964,6 +4964,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: donka
       objectReference: {fileID: 0}
+    - target: {fileID: 3628296931658891789, guid: 0a4895f3d61f6954a8b8ea476f9c082d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4227185633089900839, guid: 0a4895f3d61f6954a8b8ea476f9c082d, type: 3}
       propertyPath: m_LocalScale.x
       value: 55.728333
@@ -5097,6 +5101,60 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a4895f3d61f6954a8b8ea476f9c082d, type: 3}
+--- !u!1 &890363451
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 890363452}
+  - component: {fileID: 890363453}
+  m_Layer: 0
+  m_Name: move
+  m_TagString: Ground
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &890363452
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890363451}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 61.83, y: 23.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 900253876}
+  m_Father: {fileID: 2038084885}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &890363453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890363451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ae476ca2807a8745bf3eac4380e73a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3
+  targetPoints:
+  - {fileID: 332512094}
+  - {fileID: 202543419}
+  - {fileID: 2046609192}
+  - {fileID: 531541487}
+  reachThreshold: 0.05
+  loopMode: 0
+  playerTag: Player
 --- !u!1 &900253875
 GameObject:
   m_ObjectHideFlags: 0
@@ -5123,7 +5181,7 @@ Transform:
   m_GameObject: {fileID: 900253875}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 61.83, y: 23.4, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5133,7 +5191,7 @@ Transform:
   - {fileID: 582626327}
   - {fileID: 303051771}
   - {fileID: 1039325109}
-  m_Father: {fileID: 2038084885}
+  m_Father: {fileID: 890363452}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &900253877
 MonoBehaviour:
@@ -7352,6 +7410,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 8067392185046921385, guid: b8ae67be684824648b2a6ec252651303, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 72071f00fe8705b46a9ee8dbfb109429, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10649,7 +10711,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2038084885}
-  - component: {fileID: 2038084886}
   m_Layer: 0
   m_Name: movegear
   m_TagString: Ground
@@ -10670,30 +10731,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 900253876}
+  - {fileID: 890363452}
   m_Father: {fileID: 1187552789}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2038084886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2038084884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ae476ca2807a8745bf3eac4380e73a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 3
-  targetPoints:
-  - {fileID: 332512094}
-  - {fileID: 202543419}
-  - {fileID: 2046609192}
-  - {fileID: 531541487}
-  reachThreshold: 0.05
-  loopMode: 1
-  playerTag: Player
 --- !u!1 &2046609191
 GameObject:
   m_ObjectHideFlags: 0

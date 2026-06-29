@@ -1,5 +1,5 @@
 <h1 align="center">🧣 Thermo Climber ❄️🔥</h1>
-
+screenshots/ThermoClimber_demoplay.gif
 <p align="center">
 雪山を登る宇宙人を操作し、<br>
 <b>「体温」を武器に進む2Dアクションゲーム</b>
